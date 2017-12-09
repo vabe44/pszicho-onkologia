@@ -1,0 +1,24 @@
+<% include ../partials/csoportok_header %>
+
+    <div class="ui container">
+
+        <% include ../partials/menu %>
+
+        <form id="editcsoport" name="editcsoport" class="ui form" action="/csoportok/<%= csoport.id %>?_method=PUT" method="POST">
+            <h1 class="ui centered header">Edit Csoport</h1>
+            <br>
+            <div class="field">
+                <label>Nev</label>
+                <input type="text" name="nev" value="<%= csoport.nev %>" placeholder="Csoport neve">
+            </div>
+            <div class="field">
+                <label>Leiras</label>
+                <textarea rows="2" name="leiras" placeholder="Csoport leirasa"><%= csoport.leiras %></textarea>
+            </div>
+
+            <button class="ui button" type="submit">Submit</button>
+        </form>
+
+    </div>
+
+<% include ../partials/footer %>

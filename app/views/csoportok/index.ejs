@@ -1,0 +1,62 @@
+<% include ../partials/csoportok_header %>
+
+    <div class="ui container">
+
+        <% include ../partials/menu %>
+
+        <h1 class="ui centered inverted header">Csoportok</h1>
+
+        <table class="ui celled padded table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nev</th>
+                    <th>Leiras</th>
+                    <th>Modositas</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <% csoportok.forEach(function(csoport){ %>
+                    <tr>
+                        <td><%= csoport.id %></td>
+                        <td><%= csoport.nev %></td>
+                        <td><%= csoport.leiras %></td>
+                        <td>
+                            <div class="ui compact menu">
+                                <div class="ui simple dropdown item">
+                                    Select
+                                    <i class="dropdown icon"></i>
+                                    <div class="menu">
+                                        <div class="item">
+                                            <a href="/csoportok/<%= csoport.id %>/edit">Edit</a>
+                                        </div>
+                                        <div class="item">
+                                            <form id="delete-form" class="ui form" action="/csoportok/<%= csoport.id %>?_method=DELETE" method="POST">
+                                                <input type="submit" class="ui button" value="Delete">
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                <% }); %>
+
+            </tbody>
+            <tfoot class="full-width">
+                <tr>
+                    <th colspan="7">
+                    <a href="/csoportok/new">
+                        <div class="ui right floated small primary labeled icon button">
+                            <i class="user icon"></i> Uj Csoport
+                        </div>
+                    </a>
+                    </th>
+                </tr>
+            </tfoot>
+        </table>
+
+    </div>
+
+<% include ../partials/footer %>

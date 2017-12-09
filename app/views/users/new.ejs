@@ -1,0 +1,48 @@
+<% include ../partials/users_indexheader %>
+
+    <div class="ui container">
+
+        <% include ../partials/menu %>
+
+        <form id="newuser" name="newuser" class="ui form" method="POST" action="/signup">
+            <h1 class="ui centered header">Add New User</h1>
+            <br>
+            <div class="field">
+                <div class="three fields">
+                    <div class="field">
+                        <label>First Name</label>
+                        <input type="text" name="firstname" placeholder="First Name">
+                    </div>
+                    <div class="field">
+                        <label>Last Name</label>
+                        <input type="text" name="lastname" placeholder="Last Name">
+                    </div>
+                    <div class="field">
+                        <label>Username</label>
+                        <input type="text" name="username" placeholder="Optional">
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <div class="two fields">
+                    <div class="field">
+                        <label>Email address</label>
+                        <input type="text" name="email" placeholder="Used for login">
+                    </div>
+                    <div class="field">
+                        <label>Password</label>
+                        <input type="password" name="password" placeholder="Used for login">
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <label>About</label>
+                <textarea rows="2" name="about" placeholder="Some information about the user"></textarea>
+            </div>
+
+            <button class="ui button" type="submit">Submit</button>
+        </form>
+
+    </div>
+
+<% include ../partials/footer %>

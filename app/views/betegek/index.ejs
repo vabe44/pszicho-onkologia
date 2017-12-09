@@ -1,0 +1,83 @@
+<% include ../partials/users_indexheader %>
+
+    <div class="ui container">
+
+        <% include ../partials/menu %>
+
+        <h1 class="ui centered inverted header">Betegek</h1>
+
+        <center><a href="/betegek/new"><button class="ui inverted basic button">Add New</button></a></center>
+
+        <table class="ui celled padded table">
+            <thead>
+                <tr>
+                    <th class="single line">ID</th>
+                    <th>Nev</th>
+                    <th>Csoport</th>
+                    <th>Megjegyzes</th>
+                    <th>Fazis</th>
+                    <th>Kutataszaro</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <% betegek.forEach(function(beteg){ %>
+                    <tr>
+                        <td>
+                            <a href="/betegek/<%= beteg.id %>">
+                                <button class="ui secondary button">
+                                    <%= beteg.azonosito %>
+                                </button>
+                            </a>
+                        </td>
+
+                        <td><%= beteg.nev %></td>
+                        <td><%= beteg.BetegCsoport.nev %></td>
+                        <td><%= beteg.megjegyzes %></td>
+                        <td><%= beteg.fazis %></td>
+                        <td><%= beteg.kutataszaro %></td>
+                        <td>
+
+                            <div class="ui icon bottom right pointing dropdown button">
+                                <i class="wrench icon"></i>
+                                <div class="menu">
+                                    <a class="item disabled" href="#">Delete</a>
+                                    <a class="item" href="/betegek/<%= beteg.id %>/edit">Edit</a>
+                                    <a class="item" href="/betegek/<%= beteg.id %>">Profile</a>
+                                </div>
+                            </div>
+
+                        </td>
+                    </tr>
+                <% }); %>
+
+            </tbody>
+            <tfoot class="full-width">
+                <tr>
+                    <th colspan="7">
+                    <a href="/betegek/new">
+                        <div class="ui right floated small primary labeled icon button">
+                            <i class="user icon"></i> Uj Beteg
+                        </div>
+                    </a>
+                    </th>
+                </tr>
+            </tfoot>
+        </table>
+
+    </div>
+
+    <script src='/scripts/jquery-2.2.4.min.js'></script>
+    <script src='/scripts/semantic.min.js'></script>
+    <script src='/scripts/tablesort.js'></script>
+
+    <script type="text/javascript">
+    $('.ui.dropdown')
+        .dropdown({
+            direction: 'downward'
+        })
+    ;
+    </script>
+
+<% include ../partials/footer %>

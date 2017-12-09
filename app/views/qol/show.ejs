@@ -1,0 +1,1381 @@
+<% include ../partials/whoqol_editheader %>
+
+    <div class="ui container">
+
+        <% include ../partials/menu %>
+
+        <div class="ui piled segment">
+            <div class="ui grid">
+                <div class="four wide column">
+                    <div class="ui special cards">
+                        <div class="card">
+                            <div class="blurring dimmable image">
+                                <div class="ui dimmer">
+                                    <div class="content">
+                                        <div class="center">
+                                            <div class="ui inverted button">Profil</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <img src="/images/kristy.png">
+                            </div>
+                            <div class="content">
+                                <div class="header"><%= rows[0].user_id %></div>
+                                <div class="meta">
+                                    <h4 class="ui header"><%= rows[0].csoport %></h4>
+                                </div>
+                                <div class="description">
+                                    <%= rows[0].megjegyzes %>
+                                </div>
+                            </div>
+                            <div class="extra content">
+                                <span class="right floated">
+                                    <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                    <%= rows[0].datum %>
+                                </span>
+                                <span>
+                                    <i class="fa fa-tag" aria-hidden="true"></i>
+                                    <%= rows[0].alkalom %>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="twelve wide column">
+                    <div class="ui grid">
+
+                        <div class="five wide column">
+                            <h4 class="ui header">Fizikai kapacitás<a class="ui circular label"><%= rows[0].fizikai_d.toFixed(2) %></a></h4>
+                            <a class="ui red image label">
+                                <span class="eredmeny">Fájdalom és diszkomfort</span>
+                                <div class="detail"><%= rows[0].fajd %></div>
+                            </a><br>
+                            <a class="ui yellow image label">
+                                <span class="eredmeny">Energia és fáradtság</span>
+                                <div class="detail"><%= rows[0].energia %></div>
+                            </a><br>
+                            <a class="ui blue image label">
+                                <span class="eredmeny">Alvás és pihenés</span>
+                                <div class="detail"><%= rows[0].alvas %></div>
+                            </a><br>
+
+                            <h4 class="ui header">Pszichológiai állapot<a class="ui circular label"><%= rows[0].psziches_d.toFixed(2) %></a></h4>
+                            <a class="ui green image label">
+                                <span class="eredmeny">Pozitív érzések</span>
+                                <div class="detail"><%= rows[0].pozerz %></div>
+                            </a><br>
+                            <a class="ui teal image label">
+                                <span class="eredmeny">Gondolkodás, tanulás</span>
+                                <div class="detail"><%= rows[0].gondolk %></div>
+                            </a><br>
+                            <a class="ui violet image label">
+                                <span class="eredmeny">Önértékelés</span>
+                                <div class="detail"><%= rows[0].onertek %></div>
+                            </a><br>
+                            <a class="ui brown image label">
+                                <span class="eredmeny">Testkép</span>
+                                <div class="detail"><%= rows[0].testkep %></div>
+                            </a><br>
+                            <a class="ui grey image label">
+                                <span class="eredmeny">Negatív érzések</span>
+                                <div class="detail"><%= rows[0].negerz %></div>
+                            </a><br>
+                        </div>
+
+                        <div class="five wide column">
+                            <h4 class="ui header">Függetlenség<a class="ui circular label"><%= rows[0].fuggetlen_d.toFixed(2) %></a></h4>
+                            <a class="ui olive image label">
+                                <span class="eredmeny">Mobilitás</span>
+                                <div class="detail"><%= rows[0].mobil %></div>
+                            </a><br>
+                            <a class="ui yellow image label">
+                                <span class="eredmeny">Mindennapi tevékenységek</span>
+                                <div class="detail"><%= rows[0].aktiv %></div>
+                            </a><br>
+                            <a class="ui blue image label">
+                                <span class="eredmeny">Gyógyszerfüggőség</span>
+                                <div class="detail"><%= rows[0].gyogyszerfugg %></div>
+                            </a><br>
+                            <a class="ui violet image label">
+                                <span class="eredmeny">Munkaképesség</span>
+                                <div class="detail"><%= rows[0].munkakep %></div>
+                            </a><br>
+
+                            <h4 class="ui header">Társas kapcsolatok<a class="ui circular label"><%= rows[0].szoc_d.toFixed(2) %></a></h4>
+                            <a class="ui green image label">
+                                <span class="eredmeny">Szociális kapcsolatok</span>
+                                <div class="detail"><%= rows[0].szoc_kapcs %></div>
+                            </a><br>
+                            <a class="ui teal image label">
+                                <span class="eredmeny">Szociális támogatás</span>
+                                <div class="detail"><%= rows[0].szoc_tam %></div>
+                            </a><br>
+                            <a class="ui pink image label">
+                                <span class="eredmeny">Szexuális aktivitás</span>
+                                <div class="detail"><%= rows[0].szex %></div>
+                            </a><br>
+                        </div>
+
+                        <div class="five wide column">
+                            <h4 class="ui header">Környezet<a class="ui circular label"><%= rows[0].korny_d.toFixed(2) %></a></h4>
+                            <a class="ui blue image label">
+                                <span class="eredmeny">Biztonságérzet</span>
+                                <div class="detail"><%= rows[0].biztons %></div>
+                            </a><br>
+                            <a class="ui olive image label">
+                                <span class="eredmeny">Otthonkörnyezet</span>
+                                <div class="detail"><%= rows[0].otthonkorny %></div>
+                            </a><br>
+                            <a class="ui green image label">
+                                <span class="eredmeny">Anyagi erőforrások</span>
+                                <div class="detail"><%= rows[0].anyagi_ef %></div>
+                            </a><br>
+                            <a class="ui pink image label">
+                                <span class="eredmeny">Egészségügyi ellátás</span>
+                                <div class="detail"><%= rows[0].egeszsegi_ellat %></div>
+                            </a><br>
+                            <a class="ui purple image label">
+                                <span class="eredmeny">Új információk</span>
+                                <div class="detail"><%= rows[0].inform %></div>
+                            </a><br>
+                            <a class="ui violet image label">
+                                <span class="eredmeny">Szabadidő</span>
+                                <div class="detail"><%= rows[0].szabadido %></div>
+                            </a><br>
+                            <a class="ui yellow image label">
+                                <span class="eredmeny">Fizikai környezet</span>
+                                <div class="detail"><%= rows[0].fiz_korny %></div>
+                            </a><br>
+                            <a class="ui orange image label">
+                                <span class="eredmeny">Közlekedés</span>
+                                <div class="detail"><%= rows[0].kozlek %></div>
+                            </a><br>
+                            <h4 class="ui header">Spiritualitás<a class="ui circular label"><%= rows[0].spiritu_d.toFixed(2) %></a></h4>
+                            <a class="ui blue image label">
+                                <span class="eredmeny">Általános QOL</span>
+                                <div class="detail"><%= rows[0].altalanos %></div>
+                            </a><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div>
+            <form name="whoqol">
+                <!--  1  -->
+                <span class="kerdes">F1.2	Aggódik-e fájdalma vagy testi tünetei miatt?</span>
+                <br/>
+                <group class="inline-radio" id="f12">
+                    <div><input type="radio" name="f12" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f12" value="2"><label>Kicsit<br>2</label></div>
+                    <div><input type="radio" name="f12" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f12" value="4"><label>Nagyon<br>4</label></div>
+                    <div><input type="radio" name="f12" value="5"><label>Rendkívül<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F1.3	Milyen nehezen birkózik meg a fájdalmaival vagy testi tüneteivel?</span>
+                <br/>
+                <group class="inline-radio" id="f13">
+                    <div><input type="radio" name="f13" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f13" value="2"><label>Kicsit<br>2</label></div>
+                    <div><input type="radio" name="f13" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f13" value="4"><label>Nagyon<br>4</label></div>
+                    <div><input type="radio" name="f13" value="5"><label>Rendkívül<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F1.4	Milyen mértékben érzi, hogy a (testi) fájdalom megakadályozza abban, hogy azt
+                tegye, amit tennie szükséges?</span>
+                <br/>
+                <group class="inline-radio" id="f14">
+                    <div><input type="radio" name="f14" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f14" value="2"><label>Kicsit<br>2</label></div>
+                    <div><input type="radio" name="f14" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f14" value="4"><label>Nagyon<br>4</label></div>
+                    <div><input type="radio" name="f14" value="5"><label>Rendkívül<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F2.2   Mennyire könnyen fárad el?</span>
+                <br/>
+                <group class="inline-radio" id="f22">
+                    <div><input type="radio" name="f22" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f22" value="2"><label>Kicsit<br>2</label></div>
+                    <div><input type="radio" name="f22" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f22" value="4"><label>Nagyon<br>4</label></div>
+                    <div><input type="radio" name="f22" value="5"><label>Rendkívül<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F2.4   Mennyire zavarja a fáradtság?</span>
+                <br/>
+                <group class="inline-radio" id="f24">
+                    <div><input type="radio" name="f24" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f24" value="2"><label>Kicsit<br>2</label></div>
+                    <div><input type="radio" name="f24" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f24" value="4"><label>Nagyon<br>4</label></div>
+                    <div><input type="radio" name="f24" value="5"><label>Rendkívül<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F3.2   Vannak-e nehézségei az alvással?</span>
+                <br/>
+                <group class="inline-radio" id="f32">
+                    <div><input type="radio" name="f32" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f32" value="2"><label>Kicsit<br>2</label></div>
+                    <div><input type="radio" name="f32" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f32" value="4"><label>Nagyon<br>4</label></div>
+                    <div><input type="radio" name="f32" value="5"><label>Rendkívül<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F3.4   Mennyire aggasztják alvási problémák?</span>
+                <br/>
+                <group class="inline-radio" id="f34">
+                    <div><input type="radio" name="f34" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f34" value="2"><label>Kicsit<br>2</label></div>
+                    <div><input type="radio" name="f34" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f34" value="4"><label>Nagyon<br>4</label></div>
+                    <div><input type="radio" name="f34" value="5"><label>Rendkívül<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F4.1   Mennyire élvezi az életet?</span>
+                <br/>
+                <group class="inline-radio" id="f41">
+                    <div><input type="radio" name="f41" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f41" value="2"><label>Kicsit<br>2</label></div>
+                    <div><input type="radio" name="f41" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f41" value="4"><label>Nagyon<br>4</label></div>
+                    <div><input type="radio" name="f41" value="5"><label>Rendkívül<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F4.3   Mennyire látja pozitívan a jövőt?</span>
+                <br/>
+                <group class="inline-radio" id="f43">
+                    <div><input type="radio" name="f43" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f43" value="2"><label>Kicsit<br>2</label></div>
+                    <div><input type="radio" name="f43" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f43" value="4"><label>Nagyon<br>4</label></div>
+                    <div><input type="radio" name="f43" value="5"><label>Rendkívül<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F4.4   Mennyire tapasztal Ön pozitív érzéseket az életében?</span>
+                <br/>
+                <group class="inline-radio" id="f44">
+                    <div><input type="radio" name="f44" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f44" value="2"><label>Kicsit<br>2</label></div>
+                    <div><input type="radio" name="f44" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f44" value="4"><label>Nagyon<br>4</label></div>
+                    <div><input type="radio" name="f44" value="5"><label>Rendkívül<br>5</label></div>
+                </group>
+                <br/>
+
+                <!--  2  -->
+                <span class="kerdes">F5.3   Mennyire jól tud koncentrálni?</span>
+                <br/>
+                <group class="inline-radio" id="f53">
+                    <div><input type="radio" name="f53" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f53" value="2"><label>Kicsit<br>2</label></div>
+                    <div><input type="radio" name="f53" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f53" value="4"><label>Nagyon<br>4</label></div>
+                    <div><input type="radio" name="f53" value="5"><label>Rendkívül<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F6.1   Mennyire értékeli önmagát?</span>
+                <br/>
+                <group class="inline-radio" id="f61">
+                    <div><input type="radio" name="f61" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f61" value="2"><label>Kevéssé<br>2</label></div>
+                    <div><input type="radio" name="f61" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f61" value="4"><label>Nagyon<br>4</label></div>
+                    <div><input type="radio" name="f61" value="5"><label>Rendkívül<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F6.2   Mennyire bízik önmagában?</span>
+                <br/>
+                <group class="inline-radio" id="f62">
+                    <div><input type="radio" name="f62" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f62" value="2"><label>Kevéssé<br>2</label></div>
+                    <div><input type="radio" name="f62" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f62" value="4"><label>Nagyon<br>4</label></div>
+                    <div><input type="radio" name="f62" value="5"><label>Rendkívül<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F7.2   Gátolja-e valamiben a kinézete?</span>
+                <br/>
+                <group class="inline-radio" id="f72">
+                    <div><input type="radio" name="f72" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f72" value="2"><label>Kevéssé<br>2</label></div>
+                    <div><input type="radio" name="f72" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f72" value="4"><label>Nagyon<br>4</label></div>
+                    <div><input type="radio" name="f72" value="5"><label>Teljesen<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">L7.3   Van-e a megjelenésének olyan vonatkozása, amely miatt kényelmetlenül szokta érezni magát?</span>
+                <br/>
+                <group class="inline-radio" id="f73">
+                    <div><input type="radio" name="f73" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f73" value="2"><label>Kevéssé<br>2</label></div>
+                    <div><input type="radio" name="f73" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f73" value="4"><label>Nagyon<br>4</label></div>
+                    <div><input type="radio" name="f73" value="5"><label>Teljesen<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F8.2   Mennyire aggódik?</span>
+                <br/>
+                <group class="inline-radio" id="f82">
+                    <div><input type="radio" name="f82" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f82" value="2"><label>Kicsit<br>2</label></div>
+                    <div><input type="radio" name="f82" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f82" value="4"><label>Nagyon<br>4</label></div>
+                    <div><input type="radio" name="f82" value="5"><label>Rendkívül<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F8.3   A szomorúság és depresszió érzései mennyire akadályozzák a mindennapi tevékenységeiben?</span>
+                <br/>
+                <group class="inline-radio" id="f83">
+                    <div><input type="radio" name="f83" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f83" value="2"><label>Kicsit<br>2</label></div>
+                    <div><input type="radio" name="f83" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f83" value="4"><label>Nagyon<br>4</label></div>
+                    <div><input type="radio" name="f83" value="5"><label>Rendkívül<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F8.4   A levertség (depresszió) érzése mennyire szokott a terhére lenni?</span>
+                <br/>
+                <group class="inline-radio" id="f84">
+                    <div><input type="radio" name="f84" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f84" value="2"><label>Kicsit<br>2</label></div>
+                    <div><input type="radio" name="f84" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f84" value="4"><label>Nagyon<br>4</label></div>
+                    <div><input type="radio" name="f84" value="5"><label>Rendkívül<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F10.2  Milyen mértékben vannak nehézségei megszokott tevékenységeinek végzésekor?</span>
+                <br/>
+                <group class="inline-radio" id="f102">
+                    <div><input type="radio" name="f102" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f102" value="2"><label>Kicsit<br>2</label></div>
+                    <div><input type="radio" name="f102" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f102" value="4"><label>Nagyon<br>4</label></div>
+                    <div><input type="radio" name="f102" value="5"><label>Rendkívül<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F10.4  Mennyire zavarja bármely korlátozottság a mindennapi életvitelében?</span>
+                <br/>
+                <group class="inline-radio" id="f104">
+                    <div><input type="radio" name="f104" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f104" value="2"><label>Kicsit<br>2</label></div>
+                    <div><input type="radio" name="f104" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f104" value="4"><label>Nagyon<br>4</label></div>
+                    <div><input type="radio" name="f104" value="5"><label>Rendkívül<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F11.2  Mennyire van szüksége gyógyszerelésre a mindennapos élettevékenység érdekében?</span>
+                <br/>
+                <group class="inline-radio" id="f112">
+                    <div><input type="radio" name="f112" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f112" value="2"><label>Kicsit<br>2</label></div>
+                    <div><input type="radio" name="f112" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f112" value="4"><label>Nagyon<br>4</label></div>
+                    <div><input type="radio" name="f112" value="5"><label>Rendkívül<br>5</label></div>
+                </group>
+                <br/>
+
+                <!--  3  -->
+                <span class="kerdes">F11.3  Mennyire van szüksége orvosi kezelésre a mindennapos élettevékenység érdekében?</span>
+                <br/>
+                <group class="inline-radio" id="f113">
+                    <div><input type="radio" name="f113" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f113" value="2"><label>Kicsit<br>2</label></div>
+                    <div><input type="radio" name="f113" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f113" value="4"><label>Nagyon<br>4</label></div>
+                    <div><input type="radio" name="f113" value="5"><label>Rendkívül<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F11.4  Életminősége milyen mértékben függ gyógyszerek vagy orvosi segédeszközök használatától?</span>
+                <br/>
+                <group class="inline-radio" id="f114">
+                    <div><input type="radio" name="f114" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f114" value="2"><label>Kevéssé<br>2</label></div>
+                    <div><input type="radio" name="f114" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f114" value="4"><label>Nagyon<br>4</label></div>
+                    <div><input type="radio" name="f114" value="5"><label>Rendkívül<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F13.1  Mennyire érzi egyedül magát az életben?</span>
+                <br/>
+                <group class="inline-radio" id="f131">
+                    <div><input type="radio" name="f131" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f131" value="2"><label>Kevéssé<br>2</label></div>
+                    <div><input type="radio" name="f131" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f131" value="4"><label>Nagyon<br>4</label></div>
+                    <div><input type="radio" name="f131" value="5"><label>Rendkívül<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F15.2  Mennyire jól szoktak nemi szükségletei kielégülni?</span>
+                <br/>
+                <group class="inline-radio" id="f152">
+                    <div><input type="radio" name="f152" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f152" value="2"><label>Kevéssé<br>2</label></div>
+                    <div><input type="radio" name="f152" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f152" value="4"><label>Nagyon<br>4</label></div>
+                    <div><input type="radio" name="f152" value="5"><label>Teljesen<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F15.4  Zavarják-e nehézségek a nemi életében?</span>
+                <br/>
+                <group class="inline-radio" id="f154">
+                    <div><input type="radio" name="f154" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f154" value="2"><label>Kevéssé<br>2</label></div>
+                    <div><input type="radio" name="f154" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f154" value="4"><label>Nagyon<br>4</label></div>
+                    <div><input type="radio" name="f154" value="5"><label>Teljesen<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F16.1  Mennyire érzi magát biztonságban mindennapi életében?</span>
+                <br/>
+                <group class="inline-radio" id="f161">
+                    <div><input type="radio" name="f161" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f161" value="2"><label>Kicsit<br>2</label></div>
+                    <div><input type="radio" name="f161" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f161" value="4"><label>Nagyon<br>4</label></div>
+                    <div><input type="radio" name="f161" value="5"><label>Rendkívül<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F16.2  Úgy érzi, hogy biztonságos környezetben él?</span>
+                <br/>
+                <group class="inline-radio" id="f162">
+                    <div><input type="radio" name="f162" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f162" value="2"><label>Kicsit<br>2</label></div>
+                    <div><input type="radio" name="f162" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f162" value="4"><label>Nagyon<br>4</label></div>
+                    <div><input type="radio" name="f162" value="5"><label>Rendkívül<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F16.3  Mennyire aggódik biztonsága miatt?</span>
+                <br/>
+                <group class="inline-radio" id="f163">
+                    <div><input type="radio" name="f163" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f163" value="2"><label>Enyhén<br>2</label></div>
+                    <div><input type="radio" name="f163" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f163" value="4"><label>Nagyon<br>4</label></div>
+                    <div><input type="radio" name="f163" value="5"><label>Rendkívüli mértékben<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F17.1  Mennyire kényelmes az a hely, ahol lakik?</span>
+                <br/>
+                <group class="inline-radio" id="f171">
+                    <div><input type="radio" name="f171" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f171" value="2"><label>Kevéssé<br>2</label></div>
+                    <div><input type="radio" name="f171" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f171" value="4"><label>Nagyon<br>4</label></div>
+                    <div><input type="radio" name="f171" value="5"><label>Tökéletesen<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F17.4  Mennyire szereti azt a helyet, ahol lakik?</span>
+                <br/>
+                <group class="inline-radio" id="f174">
+                    <div><input type="radio" name="f174" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f174" value="2"><label>Kicsit<br>2</label></div>
+                    <div><input type="radio" name="f174" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f174" value="4"><label>Nagyon<br>4</label></div>
+                    <div><input type="radio" name="f174" value="5"><label>Rendkívül<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F18.2  Szoktak lenni anyagi nehézségei?</span>
+                <br/>
+                <group class="inline-radio" id="f182">
+                    <div><input type="radio" name="f182" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f182" value="2"><label>Kicsit<br>2</label></div>
+                    <div><input type="radio" name="f182" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f182" value="4"><label>Nagyon<br>4</label></div>
+                    <div><input type="radio" name="f182" value="5"><label>Rendkívül<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F18.4  Mennyire aggódik a pénz miatt?</span>
+                <br/>
+                <group class="inline-radio" id="f184">
+                    <div><input type="radio" name="f184" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f184" value="2"><label>Kicsit<br>2</label></div>
+                    <div><input type="radio" name="f184" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f184" value="4"><label>Nagyon<br>4</label></div>
+                    <div><input type="radio" name="f184" value="5"><label>Rendkívül<br>5</label></div>
+                </group>
+                <br/>
+
+                <!--  4  -->
+                <span class="kerdes">F19.1  Mennyire könnyen jut jó orvosi ellátáshoz?</span>
+                <br/>
+                <group class="inline-radio" id="f191">
+                    <div><input type="radio" name="f191" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f191" value="2"><label>Kicsit<br>2</label></div>
+                    <div><input type="radio" name="f191" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f191" value="4"><label>Nagyon<br>4</label></div>
+                    <div><input type="radio" name="f191" value="5"><label>Rendkívül<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F21.3  Mennyire élvezi szabadidejét?</span>
+                <br/>
+                <group class="inline-radio" id="f213">
+                    <div><input type="radio" name="f213" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f213" value="2"><label>Kicsit<br>2</label></div>
+                    <div><input type="radio" name="f213" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f213" value="4"><label>Nagyon<br>4</label></div>
+                    <div><input type="radio" name="f213" value="5"><label>Rendkívül<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F22.1  Mennyire egészséges a fizikai környezete?</span>
+                <br/>
+                <group class="inline-radio" id="f221">
+                    <div><input type="radio" name="f221" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f221" value="2"><label>Kicsit<br>2</label></div>
+                    <div><input type="radio" name="f221" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f221" value="4"><label>Nagyon<br>4</label></div>
+                    <div><input type="radio" name="f221" value="5"><label>Rendkívül<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F22.2  Mennyire aggasztja a zaj azon a területen, amelyen él?</span>
+                <br/>
+                <group class="inline-radio" id="f222">
+                    <div><input type="radio" name="f222" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f222" value="2"><label>Kicsit<br>2</label></div>
+                    <div><input type="radio" name="f222" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f222" value="4"><label>Nagyon<br>4</label></div>
+                    <div><input type="radio" name="f222" value="5"><label>Teljesen<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F23.2  Milyen mértékben vannak problémái a közlekedéssel?</span>
+                <br/>
+                <group class="inline-radio" id="f232">
+                    <div><input type="radio" name="f232" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f232" value="2"><label>Kicsit<br>2</label></div>
+                    <div><input type="radio" name="f232" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f232" value="4"><label>Nagyon<br>4</label></div>
+                    <div><input type="radio" name="f232" value="5"><label>Teljesen<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F23.4  A közlekedési nehézségek mennyire korlátozzák életét?</span>
+                <br/>
+                <group class="inline-radio" id="f234">
+                    <div><input type="radio" name="f234" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f234" value="2"><label>Kicsit<br>2</label></div>
+                    <div><input type="radio" name="f234" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f234" value="4"><label>Nagyon<br>4</label></div>
+                    <div><input type="radio" name="f234" value="5"><label>Rendkívül<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F2.1   Van-e elég energiája a mindennapos életre?</span>
+                <br/>
+                <group class="inline-radio" id="f21">
+                    <div><input type="radio" name="f21" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f21" value="2"><label>Kevéssé<br>2</label></div>
+                    <div><input type="radio" name="f21" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f21" value="4"><label>Többnyire<br>4</label></div>
+                    <div><input type="radio" name="f21" value="5"><label>Teljesen<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F7.1   Képes elfogadni testi megjelenését?</span>
+                <br/>
+                <group class="inline-radio" id="f71">
+                    <div><input type="radio" name="f71" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f71" value="2"><label>Kevéssé<br>2</label></div>
+                    <div><input type="radio" name="f71" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f71" value="4"><label>Többnyire<br>4</label></div>
+                    <div><input type="radio" name="f71" value="5"><label>Teljesen<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F10.1  Milyen mértékben képes elvégezni mindennapos tevékenységeit?</span>
+                <br/>
+                <group class="inline-radio" id="f101">
+                    <div><input type="radio" name="f101" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f101" value="2"><label>Kevéssé<br>2</label></div>
+                    <div><input type="radio" name="f101" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f101" value="4"><label>Többnyire<br>4</label></div>
+                    <div><input type="radio" name="f101" value="5"><label>Teljesen<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F11.1  Mennyire szorul gyógyszerekre?</span>
+                <br/>
+                <group class="inline-radio" id="f111">
+                    <div><input type="radio" name="f111" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f111" value="2"><label>Kevéssé<br>2</label></div>
+                    <div><input type="radio" name="f111" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f111" value="4"><label>Többnyire<br>4</label></div>
+                    <div><input type="radio" name="f111" value="5"><label>Teljesen<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F14.1  Meg szokta kapni azt a fajta támogatást másoktól, amelyre szüksége van?</span>
+                <br/>
+                <group class="inline-radio" id="f141">
+                    <div><input type="radio" name="f141" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f141" value="2"><label>Kevéssé<br>2</label></div>
+                    <div><input type="radio" name="f141" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f141" value="4"><label>Többnyire<br>4</label></div>
+                    <div><input type="radio" name="f141" value="5"><label>Teljesen<br>5</label></div>
+                </group>
+                <br/>
+
+                <!--  5  -->
+                <span class="kerdes">F14.2  Milyen mértékben számíthat a barátaira akkor, amikor szüksége van rájuk?</span>
+                <br/>
+                <group class="inline-radio" id="f142">
+                    <div><input type="radio" name="f142" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f142" value="2"><label>Kevéssé<br>2</label></div>
+                    <div><input type="radio" name="f142" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f142" value="4"><label>Többnyire<br>4</label></div>
+                    <div><input type="radio" name="f142" value="5"><label>Teljesen<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F17.2  Otthonának minősége milyen mértékben találkozik az Ön szükségleteivel?</span>
+                <br/>
+                <group class="inline-radio" id="f172">
+                    <div><input type="radio" name="f172" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f172" value="2"><label>Kevéssé<br>2</label></div>
+                    <div><input type="radio" name="f172" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f172" value="4"><label>Többnyire<br>4</label></div>
+                    <div><input type="radio" name="f172" value="5"><label>Teljesen<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F18.1  Van elég pénze szükségletei kielégítésére?</span>
+                <br/>
+                <group class="inline-radio" id="f181">
+                    <div><input type="radio" name="f181" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f181" value="2"><label>Kevéssé<br>2</label></div>
+                    <div><input type="radio" name="f181" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f181" value="4"><label>Többnyire<br>4</label></div>
+                    <div><input type="radio" name="f181" value="5"><label>Teljesen<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F20.1  Mennyire hozzáférhetőek az Ön számára azok az információk, amelyekre mindennapos életében szüksége van?</span>
+                <br/>
+                <group class="inline-radio" id="f201">
+                    <div><input type="radio" name="f201" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f201" value="2"><label>Kevéssé<br>2</label></div>
+                    <div><input type="radio" name="f201" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f201" value="4"><label>Többnyire<br>4</label></div>
+                    <div><input type="radio" name="f201" value="5"><label>Teljesen<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F20.2  Milyen mértékben nyilik lehetősége azon információk megszerzésére, amelyekre érzése szerint szüksége van?</span>
+                <br/>
+                <group class="inline-radio" id="f202">
+                    <div><input type="radio" name="f202" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f202" value="2"><label>Kevéssé<br>2</label></div>
+                    <div><input type="radio" name="f202" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f202" value="4"><label>Többnyire<br>4</label></div>
+                    <div><input type="radio" name="f202" value="5"><label>Teljesen<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F21.1  Milyen mértékben van lehetősége szabadidős tevékenységekre?</span>
+                <br/>
+                <group class="inline-radio" id="f211">
+                    <div><input type="radio" name="f211" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f211" value="2"><label>Kevéssé<br>2</label></div>
+                    <div><input type="radio" name="f211" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f211" value="4"><label>Többnyire<br>4</label></div>
+                    <div><input type="radio" name="f211" value="5"><label>Teljesen<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F21.2  Mennyire képes kikapcsolódni és jól érezni magát?</span>
+                <br/>
+                <group class="inline-radio" id="f212">
+                    <div><input type="radio" name="f212" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f212" value="2"><label>Kevéssé<br>2</label></div>
+                    <div><input type="radio" name="f212" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f212" value="4"><label>Többnyire<br>4</label></div>
+                    <div><input type="radio" name="f212" value="5"><label>Teljesen<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F23.1  Mennyire jut hozzá megfelelő közlekedési eszközökhöz?</span>
+                <br/>
+                <group class="inline-radio" id="f231">
+                    <div><input type="radio" name="f231" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f231" value="2"><label>Kevéssé<br>2</label></div>
+                    <div><input type="radio" name="f231" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f231" value="4"><label>Többnyire<br>4</label></div>
+                    <div><input type="radio" name="f231" value="5"><label>Teljesen<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">G2  Mennyire elégedett az életminőségével?</span>
+                <br/>
+                <group class="inline-radio" id="g2">
+                    <div><input type="radio" name="g2" value="1"><label>Nagyon elégedetlen<br>1</label></div>
+                    <div><input type="radio" name="g2" value="2"><label>Elégedetlen<br>2</label></div>
+                    <div><input type="radio" name="g2" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="g2" value="4"><label>Elégedett<br>4</label></div>
+                    <div><input type="radio" name="g2" value="5"><label>Nagyon elégedett<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">G3  Általánosságban mennyire elégedett életével?</span>
+                <br/>
+                <group class="inline-radio" id="g3">
+                    <div><input type="radio" name="g3" value="1"><label>Nagyon elégedetlen<br>1</label></div>
+                    <div><input type="radio" name="g3" value="2"><label>Elégedetlen<br>2</label></div>
+                    <div><input type="radio" name="g3" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="g3" value="4"><label>Elégedett<br>4</label></div>
+                    <div><input type="radio" name="g3" value="5"><label>Nagyon elégedett<br>5</label></div>
+                </group>
+                <br/>
+
+                <!-- 6 -->
+                <span class="kerdes">G4  Mennyire elégedett az egészségével?</span>
+                <br/>
+                <group class="inline-radio" id="g4">
+                    <div><input type="radio" name="g4" value="1"><label>Nagyon elégedetlen<br>1</label></div>
+                    <div><input type="radio" name="g4" value="2"><label>Elégedetlen<br>2</label></div>
+                    <div><input type="radio" name="g4" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="g4" value="4"><label>Elégedett<br>4</label></div>
+                    <div><input type="radio" name="g4" value="5"><label>Nagyon elégedett<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F2.3	Mennyire elégedett azzal az energiával, amellyel rendelkezik?</span>
+                <br/>
+                <group class="inline-radio" id="f23">
+                    <div><input type="radio" name="f23" value="1"><label>Nagyon elégedetlen<br>1</label></div>
+                    <div><input type="radio" name="f23" value="2"><label>Elégedetlen<br>2</label></div>
+                    <div><input type="radio" name="f23" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f23" value="4"><label>Elégedett<br>4</label></div>
+                    <div><input type="radio" name="f23" value="5"><label>Nagyon elégedett<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F3.3	Mennyire elégedett az alvásával?</span>
+                <br/>
+                <group class="inline-radio" id="f33">
+                    <div><input type="radio" name="f33" value="1"><label>Nagyon elégedetlen<br>1</label></div>
+                    <div><input type="radio" name="f33" value="2"><label>Elégedetlen<br>2</label></div>
+                    <div><input type="radio" name="f33" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f33" value="4"><label>Elégedett<br>4</label></div>
+                    <div><input type="radio" name="f33" value="5"><label>Nagyon elégedett<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F5.2	Mennyire elégedett tanulási, ismeretszerzési képességeivel?</span>
+                <br/>
+                <group class="inline-radio" id="f52">
+                    <div><input type="radio" name="f52" value="1"><label>Nagyon elégedetlen<br>1</label></div>
+                    <div><input type="radio" name="f52" value="2"><label>Elégedetlen<br>2</label></div>
+                    <div><input type="radio" name="f52" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f52" value="4"><label>Elégedett<br>4</label></div>
+                    <div><input type="radio" name="f52" value="5"><label>Nagyon elégedett<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F5.4	Mennyire elégedett döntéshozási képességével?</span>
+                <br/>
+                <group class="inline-radio" id="f54">
+                    <div><input type="radio" name="f54" value="1"><label>Nagyon elégedetlen<br>1</label></div>
+                    <div><input type="radio" name="f54" value="2"><label>Elégedetlen<br>2</label></div>
+                    <div><input type="radio" name="f54" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f54" value="4"><label>Elégedett<br>4</label></div>
+                    <div><input type="radio" name="f54" value="5"><label>Nagyon elégedett<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F6.3	Mennyire elégedett önmagával?</span>
+                <br/>
+                <group class="inline-radio" id="f63">
+                    <div><input type="radio" name="f63" value="1"><label>Nagyon elégedetlen<br>1</label></div>
+                    <div><input type="radio" name="f63" value="2"><label>Elégedetlen<br>2</label></div>
+                    <div><input type="radio" name="f63" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f63" value="4"><label>Elégedett<br>4</label></div>
+                    <div><input type="radio" name="f63" value="5"><label>Nagyon elégedett<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F6.4	Mennyire elégedett a képességeivel?</span>
+                <br/>
+                <group class="inline-radio" id="f64">
+                    <div><input type="radio" name="f64" value="1"><label>Nagyon elégedetlen<br>1</label></div>
+                    <div><input type="radio" name="f64" value="2"><label>Elégedetlen<br>2</label></div>
+                    <div><input type="radio" name="f64" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f64" value="4"><label>Elégedett<br>4</label></div>
+                    <div><input type="radio" name="f64" value="5"><label>Nagyon elégedett<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F7.4	Mennyire elégedett azzal, ahogy kinéz?</span>
+                <br/>
+                <group class="inline-radio" id="f74">
+                    <div><input type="radio" name="f74" value="1"><label>Nagyon elégedetlen<br>1</label></div>
+                    <div><input type="radio" name="f74" value="2"><label>Elégedetlen<br>2</label></div>
+                    <div><input type="radio" name="f74" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f74" value="4"><label>Elégedett<br>4</label></div>
+                    <div><input type="radio" name="f74" value="5"><label>Nagyon elégedett<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F10.3	Mennyire elégedett a mindennapos életvitele során a saját képességeivel?</span>
+                <br/>
+                <group class="inline-radio" id="f103">
+                    <div><input type="radio" name="f103" value="1"><label>Nagyon elégedetlen<br>1</label></div>
+                    <div><input type="radio" name="f103" value="2"><label>Elégedetlen<br>2</label></div>
+                    <div><input type="radio" name="f103" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f103" value="4"><label>Elégedett<br>4</label></div>
+                    <div><input type="radio" name="f103" value="5"><label>Nagyon elégedett<br>5</label></div>
+                </group>
+                <br/>
+
+                <!-- 7 -->
+                <span class="kerdes">F13.3	Mennyire elégedett személyes kapcsolataival?</span>
+                <br/>
+                <group class="inline-radio" id="f133">
+                    <div><input type="radio" name="f133" value="1"><label>Nagyon elégedetlen<br>1</label></div>
+                    <div><input type="radio" name="f133" value="2"><label>Elégedetlen<br>2</label></div>
+                    <div><input type="radio" name="f133" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f133" value="4"><label>Elégedett<br>4</label></div>
+                    <div><input type="radio" name="f133" value="5"><label>Nagyon elégedett<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F15.3	Mennyire elégedett nemi életével?</span>
+                <br/>
+                <group class="inline-radio" id="f153">
+                    <div><input type="radio" name="f153" value="1"><label>Nagyon elégedetlen<br>1</label></div>
+                    <div><input type="radio" name="f153" value="2"><label>Elégedetlen<br>2</label></div>
+                    <div><input type="radio" name="f153" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f153" value="4"><label>Elégedett<br>4</label></div>
+                    <div><input type="radio" name="f153" value="5"><label>Nagyon elégedett<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F14.3	Mennyire elégedett a családjától kapott támogatással?</span>
+                <br/>
+                <group class="inline-radio" id="f143">
+                    <div><input type="radio" name="f143" value="1"><label>Nagyon elégedetlen<br>1</label></div>
+                    <div><input type="radio" name="f143" value="2"><label>Elégedetlen<br>2</label></div>
+                    <div><input type="radio" name="f143" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f143" value="4"><label>Elégedett<br>4</label></div>
+                    <div><input type="radio" name="f143" value="5"><label>Nagyon elégedett<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F14.4	Mennyire elégedett a barátaitól kapott támogatással?</span>
+                <br/>
+                <group class="inline-radio" id="f144">
+                    <div><input type="radio" name="f144" value="1"><label>Nagyon elégedetlen<br>1</label></div>
+                    <div><input type="radio" name="f144" value="2"><label>Elégedetlen<br>2</label></div>
+                    <div><input type="radio" name="f144" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f144" value="4"><label>Elégedett<br>4</label></div>
+                    <div><input type="radio" name="f144" value="5"><label>Nagyon elégedett<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F13.4	Mennyire elégedett azzal, ahogy másokról gondoskodni, másokat támogatni tud?</span>
+                <br/>
+                <group class="inline-radio" id="f134">
+                    <div><input type="radio" name="f134" value="1"><label>Nagyon elégedetlen<br>1</label></div>
+                    <div><input type="radio" name="f134" value="2"><label>Elégedetlen<br>2</label></div>
+                    <div><input type="radio" name="f134" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f134" value="4"><label>Elégedett<br>4</label></div>
+                    <div><input type="radio" name="f134" value="5"><label>Nagyon elégedett<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F16.4	Mennyire elégedett fizikai biztonságával?</span>
+                <br/>
+                <group class="inline-radio" id="f164">
+                    <div><input type="radio" name="f164" value="1"><label>Nagyon elégedetlen<br>1</label></div>
+                    <div><input type="radio" name="f164" value="2"><label>Elégedetlen<br>2</label></div>
+                    <div><input type="radio" name="f164" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f164" value="4"><label>Elégedett<br>4</label></div>
+                    <div><input type="radio" name="f164" value="5"><label>Nagyon elégedett<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F17.3	Mennyire elégedett lakóhelyi körülményeivel?</span>
+                <br/>
+                <group class="inline-radio" id="f173">
+                    <div><input type="radio" name="f173" value="1"><label>Nagyon elégedetlen<br>1</label></div>
+                    <div><input type="radio" name="f173" value="2"><label>Elégedetlen<br>2</label></div>
+                    <div><input type="radio" name="f173" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f173" value="4"><label>Elégedett<br>4</label></div>
+                    <div><input type="radio" name="f173" value="5"><label>Nagyon elégedett<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F18.3	Mennyire elégedett anyagi helyzetével?</span>
+                <br/>
+                <group class="inline-radio" id="f183">
+                    <div><input type="radio" name="f183" value="1"><label>Nagyon elégedetlen<br>1</label></div>
+                    <div><input type="radio" name="f183" value="2"><label>Elégedetlen<br>2</label></div>
+                    <div><input type="radio" name="f183" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f183" value="4"><label>Elégedett<br>4</label></div>
+                    <div><input type="radio" name="f183" value="5"><label>Nagyon elégedett<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F19.3	Mennyire elégedett az egészségügyi szolgáltatások elérhetőségével?</span>
+                <br/>
+                <group class="inline-radio" id="f193">
+                    <div><input type="radio" name="f193" value="1"><label>Nagyon elégedetlen<br>1</label></div>
+                    <div><input type="radio" name="f193" value="2"><label>Elégedetlen<br>2</label></div>
+                    <div><input type="radio" name="f193" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f193" value="4"><label>Elégedett<br>4</label></div>
+                    <div><input type="radio" name="f193" value="5"><label>Nagyon elégedett<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F19.4	Mennyire elégedett a szociális gondoskodás szolgáltatásaival?</span>
+                <br/>
+                <group class="inline-radio" id="f194">
+                    <div><input type="radio" name="f194" value="1"><label>Nagyon elégedetlen<br>1</label></div>
+                    <div><input type="radio" name="f194" value="2"><label>Elégedetlen<br>2</label></div>
+                    <div><input type="radio" name="f194" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f194" value="4"><label>Elégedett<br>4</label></div>
+                    <div><input type="radio" name="f194" value="5"><label>Nagyon elégedett<br>5</label></div>
+                </group>
+                <br/>
+
+                <!-- 8 -->
+                <span class="kerdes">F20.3	Menyire elégedett lehetőségeivel az új készségek megszerzése terén?</span>
+                <br/>
+                <group class="inline-radio" id="f203">
+                    <div><input type="radio" name="f203" value="1"><label>Nagyon elégedetlen<br>1</label></div>
+                    <div><input type="radio" name="f203" value="2"><label>Elégedetlen<br>2</label></div>
+                    <div><input type="radio" name="f203" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f203" value="4"><label>Elégedett<br>4</label></div>
+                    <div><input type="radio" name="f203" value="5"><label>Nagyon elégedett<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F20.4	Mennyire elégedett lehetőségeivel az új információk szerzése terén?</span>
+                <br/>
+                <group class="inline-radio" id="f204">
+                    <div><input type="radio" name="f204" value="1"><label>Nagyon elégedetlen<br>1</label></div>
+                    <div><input type="radio" name="f204" value="2"><label>Elégedetlen<br>2</label></div>
+                    <div><input type="radio" name="f204" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f204" value="4"><label>Elégedett<br>4</label></div>
+                    <div><input type="radio" name="f204" value="5"><label>Nagyon elégedett<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F21.4	Mennyire elégedett azzal a móddal, ahogy eltölti a szabadidejét?</span>
+                <br/>
+                <group class="inline-radio" id="f214">
+                    <div><input type="radio" name="f214" value="1"><label>Nagyon elégedetlen<br>1</label></div>
+                    <div><input type="radio" name="f214" value="2"><label>Elégedetlen<br>2</label></div>
+                    <div><input type="radio" name="f214" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f214" value="4"><label>Elégedett<br>4</label></div>
+                    <div><input type="radio" name="f214" value="5"><label>Nagyon elégedett<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F22.3	Mennyire elégedett fizikai környezetével (pl. szennyezettségi és zajszintjével, az éghajlatával és vonzerejével)?</span>
+                <br/>
+                <group class="inline-radio" id="f223">
+                    <div><input type="radio" name="f223" value="1"><label>Nagyon elégedetlen<br>1</label></div>
+                    <div><input type="radio" name="f223" value="2"><label>Elégedetlen<br>2</label></div>
+                    <div><input type="radio" name="f223" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f223" value="4"><label>Elégedett<br>4</label></div>
+                    <div><input type="radio" name="f223" value="5"><label>Nagyon elégedett<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F22.4	Mennyire elégedett annak a helynek az éghajlatával, ahol él?</span>
+                <br/>
+                <group class="inline-radio" id="f224">
+                    <div><input type="radio" name="f224" value="1"><label>Nagyon elégedetlen<br>1</label></div>
+                    <div><input type="radio" name="f224" value="2"><label>Elégedetlen<br>2</label></div>
+                    <div><input type="radio" name="f224" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f224" value="4"><label>Elégedett<br>4</label></div>
+                    <div><input type="radio" name="f224" value="5"><label>Nagyon elégedett<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F23.3	Mennyire elégedett a közlekedési lehetőségével?</span>
+                <br/>
+                <group class="inline-radio" id="f233">
+                    <div><input type="radio" name="f233" value="1"><label>Nagyon elégedetlen<br>1</label></div>
+                    <div><input type="radio" name="f233" value="2"><label>Elégedetlen<br>2</label></div>
+                    <div><input type="radio" name="f233" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f233" value="4"><label>Elégedett<br>4</label></div>
+                    <div><input type="radio" name="f233" value="5"><label>Nagyon elégedett<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F13.2	Boldog-e a családi kapcsolataiban?</span>
+                <br/>
+                <group class="inline-radio" id="f132">
+                    <div><input type="radio" name="f132" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f132" value="2"><label>Kevéssé<br>2</label></div>
+                    <div><input type="radio" name="f132" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f132" value="4"><label>Jelentősen<br>4</label></div>
+                    <div><input type="radio" name="f132" value="5"><label>Tökéletesen<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">G1	Hogyan értékelné életminőségét?</span>
+                <br/>
+                <group class="inline-radio" id="g1">
+                    <div><input type="radio" name="g1" value="1"><label>Nagyon rossz<br>1</label></div>
+                    <div><input type="radio" name="g1" value="2"><label>Viszonylag rossz<br>2</label></div>
+                    <div><input type="radio" name="g1" value="3"><label>Közepes<br>3</label></div>
+                    <div><input type="radio" name="g1" value="4"><label>Viszonylag jó<br>4</label></div>
+                    <div><input type="radio" name="g1" value="5"><label>Kiváló<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F15.1	Hogyan értékelné nemi életét?</span>
+                <br/>
+                <group class="inline-radio" id="f151">
+                    <div><input type="radio" name="f151" value="1"><label>Nagyon rossz<br>1</label></div>
+                    <div><input type="radio" name="f151" value="2"><label>Viszonylag rossz<br>2</label></div>
+                    <div><input type="radio" name="f151" value="3"><label>Közepes<br>3</label></div>
+                    <div><input type="radio" name="f151" value="4"><label>Viszonylag jó<br>4</label></div>
+                    <div><input type="radio" name="f151" value="5"><label>Kiváló<br>5</label></div>
+                </group>
+                <br/>
+
+                <!-- 9 -->
+                <span class="kerdes">F3.1	Mennyire alszik jól?</span>
+                <br/>
+                <group class="inline-radio" id="f31">
+                    <div><input type="radio" name="f31" value="1"><label>Nagyon rossz<br>1</label></div>
+                    <div><input type="radio" name="f31" value="2"><label>Viszonylag rossz<br>2</label></div>
+                    <div><input type="radio" name="f31" value="3"><label>Közepes<br>3</label></div>
+                    <div><input type="radio" name="f31" value="4"><label>Viszonylag jó<br>4</label></div>
+                    <div><input type="radio" name="f31" value="5"><label>Kiváló<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F5.1	Hogyan értékelné az emlékezőképességét?</span>
+                <br/>
+                <group class="inline-radio" id="f51">
+                    <div><input type="radio" name="f51" value="1"><label>Nagyon rossz<br>1</label></div>
+                    <div><input type="radio" name="f51" value="2"><label>Viszonylag rossz<br>2</label></div>
+                    <div><input type="radio" name="f51" value="3"><label>Közepes<br>3</label></div>
+                    <div><input type="radio" name="f51" value="4"><label>Viszonylag jó<br>4</label></div>
+                    <div><input type="radio" name="f51" value="5"><label>Kiváló<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F19.2	Hogyan értékelné az Ön számára hozzáférhető szociális szolgáltatások minőségét?</span>
+                <br/>
+                <group class="inline-radio" id="f192">
+                    <div><input type="radio" name="f192" value="1"><label>Nagyon rossz<br>1</label></div>
+                    <div><input type="radio" name="f192" value="2"><label>Viszonylag rossz<br>2</label></div>
+                    <div><input type="radio" name="f192" value="3"><label>Közepes<br>3</label></div>
+                    <div><input type="radio" name="f192" value="4"><label>Viszonylag jó<br>4</label></div>
+                    <div><input type="radio" name="f192" value="5"><label>Kiváló<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F1.1	Milyen gyakran szenved (testi) fájdalomtól?</span>
+                <br/>
+                <group class="inline-radio" id="f11">
+                    <div><input type="radio" name="f11" value="1"><label>Soha<br>1</label></div>
+                    <div><input type="radio" name="f11" value="2"><label>Néha<br>2</label></div>
+                    <div><input type="radio" name="f11" value="3"><label>Elég gyakran<br>3</label></div>
+                    <div><input type="radio" name="f11" value="4"><label>Gyakran<br>4</label></div>
+                    <div><input type="radio" name="f11" value="5"><label>Mindig<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F4.2	Érez-e általában elégedettséget?</span>
+                <br/>
+                <group class="inline-radio" id="f42">
+                    <div><input type="radio" name="f42" value="1"><label>Soha<br>1</label></div>
+                    <div><input type="radio" name="f42" value="2"><label>Néha<br>2</label></div>
+                    <div><input type="radio" name="f42" value="3"><label>Elég gyakran<br>3</label></div>
+                    <div><input type="radio" name="f42" value="4"><label>Gyakran<br>4</label></div>
+                    <div><input type="radio" name="f42" value="5"><label>Mindig<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F8.1	Milyen gyakran vannak olyan negatív érzései, mint szomorúság, kétségbeesés, szorongás, depresszió?</span>
+                <br/>
+                <group class="inline-radio" id="f81">
+                    <div><input type="radio" name="f81" value="1"><label>Soha<br>1</label></div>
+                    <div><input type="radio" name="f81" value="2"><label>Néha<br>2</label></div>
+                    <div><input type="radio" name="f81" value="3"><label>Elég gyakran<br>3</label></div>
+                    <div><input type="radio" name="f81" value="4"><label>Gyakran<br>4</label></div>
+                    <div><input type="radio" name="f81" value="5"><label>Mindig<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F12.1	Képes-e munkára?</span>
+                <br/>
+                <group class="inline-radio" id="f121">
+                    <div><input type="radio" name="f121" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f121" value="2"><label>Kevéssé<br>2</label></div>
+                    <div><input type="radio" name="f121" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f121" value="4"><label>Többnyire<br>4</label></div>
+                    <div><input type="radio" name="f121" value="5"><label>Teljesen<br>5</label></div>
+                </group>
+                <br/>
+
+                <!-- 10 -->
+                <span class="kerdes">F12.2	Képesnek érzi-e magát arra, hogy elvégezze feladatait?</span>
+                <br/>
+                <group class="inline-radio" id="f122">
+                    <div><input type="radio" name="f122" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f122" value="2"><label>Kevéssé<br>2</label></div>
+                    <div><input type="radio" name="f122" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f122" value="4"><label>Többnyire<br>4</label></div>
+                    <div><input type="radio" name="f122" value="5"><label>Teljesen<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F12.4	Mennyire elégedett a munkaképességével?</span>
+                <br/>
+                <group class="inline-radio" id="f124">
+                    <div><input type="radio" name="f124" value="1"><label>Nagyon elégedetlen<br>1</label></div>
+                    <div><input type="radio" name="f124" value="2"><label>Elégedetlen<br>2</label></div>
+                    <div><input type="radio" name="f124" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f124" value="4"><label>Elégedett<br>4</label></div>
+                    <div><input type="radio" name="f124" value="5"><label>Nagyon elégedett<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F12.3	Milyennek értékelné munkavégző képességét?</span>
+                <br/>
+                <group class="inline-radio" id="f123">
+                    <div><input type="radio" name="f123" value="1"><label>Nagyon rossz<br>1</label></div>
+                    <div><input type="radio" name="f123" value="2"><label>Viszonylag rossz<br>2</label></div>
+                    <div><input type="radio" name="f123" value="3"><label>Közepes<br>3</label></div>
+                    <div><input type="radio" name="f123" value="4"><label>Viszonylag jó<br>4</label></div>
+                    <div><input type="radio" name="f123" value="5"><label>Kiváló<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F9.1	Mennyire jól tud járni-kelni?</span>
+                <br/>
+                <group class="inline-radio" id="f91">
+                    <div><input type="radio" name="f91" value="1"><label>Nagyon rossz<br>1</label></div>
+                    <div><input type="radio" name="f91" value="2"><label>Viszonylag rossz<br>2</label></div>
+                    <div><input type="radio" name="f91" value="3"><label>Közepes<br>3</label></div>
+                    <div><input type="radio" name="f91" value="4"><label>Viszonylag jó<br>4</label></div>
+                    <div><input type="radio" name="f91" value="5"><label>Kiváló<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F9.3	Mennyire zavarja bármely nehézség a mozgás terén?</span>
+                <br/>
+                <group class="inline-radio" id="f93">
+                    <div><input type="radio" name="f93" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f93" value="2"><label>Kevéssé<br>2</label></div>
+                    <div><input type="radio" name="f93" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f93" value="4"><label>Többnyire<br>4</label></div>
+                    <div><input type="radio" name="f93" value="5"><label>Teljesen<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F9.4	Milyen mértékben befolyásolják életvitelét a mozgás terén megnyilvánuló nehézségek?</span>
+                <br/>
+                <group class="inline-radio" id="f94">
+                    <div><input type="radio" name="f94" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f94" value="2"><label>Kevéssé<br>2</label></div>
+                    <div><input type="radio" name="f94" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f94" value="4"><label>Többnyire<br>4</label></div>
+                    <div><input type="radio" name="f94" value="5"><label>Teljesen<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F9.2	Mennyire elégedett saját mozgási képességével?</span>
+                <br/>
+                <group class="inline-radio" id="f92">
+                    <div><input type="radio" name="f92" value="1"><label>Nagyon elégedetlen<br>1</label></div>
+                    <div><input type="radio" name="f92" value="2"><label>Elégedetlen<br>2</label></div>
+                    <div><input type="radio" name="f92" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f92" value="4"><label>Elégedett<br>4</label></div>
+                    <div><input type="radio" name="f92" value="5"><label>Nagyon elégedett<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F24.1	 Személyes hite értelmet ad-e életének?</span>
+                <br/>
+                <group class="inline-radio" id="f241">
+                    <div><input type="radio" name="f241" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f241" value="2"><label>Kicsit<br>2</label></div>
+                    <div><input type="radio" name="f241" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f241" value="4"><label>Nagyon<br>4</label></div>
+                    <div><input type="radio" name="f241" value="5"><label>Rendkívül<br>5</label></div>
+                </group>
+                <br/>
+
+                <!-- 11 -->
+                <span class="kerdes">F24.2	Milyen mértékben érzi életét értelmesnek?</span>
+                <br/>
+                <group class="inline-radio" id="f242">
+                    <div><input type="radio" name="f242" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f242" value="2"><label>Kicsit<br>2</label></div>
+                    <div><input type="radio" name="f242" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f242" value="4"><label>Nagyon<br>4</label></div>
+                    <div><input type="radio" name="f242" value="5"><label>Rendkívül<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F24.3	Személyes hite milyen mértékben ad Önnek erőt a nehézségekkel való szembeszálláshoz?</span>
+                <br/>
+                <group class="inline-radio" id="f243">
+                    <div><input type="radio" name="f243" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f243" value="2"><label>Kicsit<br>2</label></div>
+                    <div><input type="radio" name="f243" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f243" value="4"><label>Nagyon<br>4</label></div>
+                    <div><input type="radio" name="f243" value="5"><label>Rendkívül<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">F24.4 Személyes hite milyen mértékben segít Önnek az élet nehézségeinek megértésénél?</span>
+                <br/>
+                <group class="inline-radio" id="f244">
+                    <div><input type="radio" name="f244" value="1"><label>Egyáltalán nem<br>1</label></div>
+                    <div><input type="radio" name="f244" value="2"><label>Kicsit<br>2</label></div>
+                    <div><input type="radio" name="f244" value="3"><label>Közepesen<br>3</label></div>
+                    <div><input type="radio" name="f244" value="4"><label>Nagyon<br>4</label></div>
+                    <div><input type="radio" name="f244" value="5"><label>Rendkívül<br>5</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">Mi az Ön neme?</span>
+                <br/>
+                <group class="inline-radio" id="nem">
+                    <div><input type="radio" name="nem" value="1"><label>Férfi</label></div>
+                    <div><input type="radio" name="nem" value="2"><label>Nő</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">Mi a legmagasabb iskolai végzettsége?</span>
+                <br/>
+                <group class="inline-radio" id="vegzettseg">
+                    <div><input type="radio" name="vegzettseg" value="1"><label>nincs</label></div>
+                    <div><input type="radio" name="vegzettseg" value="2"><label>általános iskola</label></div>
+                    <div><input type="radio" name="vegzettseg" value="3"><label>középiskola</label></div>
+                    <div><input type="radio" name="vegzettseg" value="4"><label>főiskola / egyetem</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">Mi a családi állapota?</span>
+                <br/>
+                <group class="inline-radio" id="csaladi_allapot">
+                    <div><input type="radio" name="csaladi_allapot" value="1"><label>egyedülálló</label></div>
+                    <div><input type="radio" name="csaladi_allapot" value="2"><label>külön él</label></div>
+                    <div><input type="radio" name="csaladi_allapot" value="3"><label>házas</label></div>
+                    <div><input type="radio" name="csaladi_allapot" value="4"><label>elvált</label></div>
+                    <div><input type="radio" name="csaladi_allapot" value="5"><label>élettársa van</label></div>
+                    <div><input type="radio" name="csaladi_allapot" value="6"><label>özvegy</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">Beteg-e jelenleg?</span>
+                <br/>
+                <group class="inline-radio" id="beteg_e">
+                    <div><input type="radio" name="beteg_e" value="1"><label>nem</label></div>
+                    <div><input type="radio" name="beteg_e" value="2"><label>igen</label></div>
+                </group>
+                <br/>
+
+                <span class="kerdes">Ha valami nincs rendben egészségével, mit gondol, mi az? Kérjük húzza alá azt, amelyik leginkább vonatkozik Önre!</span>
+                <br/>
+                <group class="inline-checkbox">
+                    <div><input type="checkbox" id="sziv" name="sziv"><label>Szívbetegség</label></div>
+                    <div><input type="checkbox" id="vernyomas" name="vernyomas"><label>Magas vérnyomás</label></div>
+                    <div><input type="checkbox" id="reuma" name="reuma"><label>Rheumás betegség</label></div>
+                    <div><input type="checkbox" id="daganat" name="daganat"><label>Daganat</label></div>
+                    <div><input type="checkbox" id="legzoszervi" name="legzoszervi"><label>Krónikus légzõszervi betegség</label></div>
+                </group>
+                <group class="inline-checkbox">
+                    <div><input type="checkbox" id="cukorbetegseg" name="cukorbetegseg"><label>Cukorbetegség</label></div>
+                    <div><input type="checkbox" id="halyog" name="halyog"><label>Hályog</label></div>
+                    <div><input type="checkbox" id="feloldali_benulas" name="feloldali_benulassziv"><label>Féloldali bénulás</label></div>
+                    <div><input type="checkbox" id="csonttores" name="csonttores"><label>Csonttörés</label></div>
+                    <div><input type="checkbox" id="kronikus_ideg_v_lelki_problema" name="kronikus_ideg_v_lelki_problema"><label>Krónikus idegi / lelki problémák</label></div>
+                </group>
+                <group class="inline-checkbox">
+                    <div><input type="checkbox" id="kronikus_labbetegseg_fajdalom" name="kronikus_labbetegseg_fajdalom"><label>Krónikus lábbetegségek, fájdalom</label></div>
+                    <div><input type="checkbox" id="aranyer" name="aranyer"><label>Aranyér</label></div>
+                    <div><input type="checkbox" id="parkinson" name="parkinson"><label>Parkinson betegség</label></div>
+                    <div><input type="checkbox" name="egyeb"><label>Egyéb</label></div>
+                </group>
+                <br/>
+            </form>
+        </div>
+
+    </div>
+<script src='/scripts/fastclick.js'></script>
+<script src='/scripts/jquery-2.2.4.min.js'></script>
+<script src='/scripts/semantic.min.js'></script>
+<script type="text/javascript">
+    // Included fastclick.js to make the inputs quicker to respond to taps on mobile
+
+    if ('addEventListener' in document) {
+        document.addEventListener('DOMContentLoaded', function() {
+            FastClick.attach(document.body);
+        }, false);
+    }
+</script>
+<script type="text/javascript">
+    var tesztadatok = <%- JSON.stringify(rows[0]) %>;
+
+    var rkerdesek = document.getElementsByClassName("inline-radio");
+    for (i = 0; i < rkerdesek.length; i++) {
+        var kerdes = rkerdesek[i].getAttribute("id");
+        if(tesztadatok[kerdes] === 0) continue;
+        var valaszok = document.getElementsByName(kerdes);
+        var valasz = tesztadatok[kerdes]-1;
+        valaszok[valasz].checked = true;
+    }
+
+    var checkboxes = document.querySelectorAll("input[type='checkbox']");
+    for(var i = 0; i < checkboxes.length; i++) {
+        var kerdes = checkboxes[i].getAttribute("id");
+        if(tesztadatok[kerdes] === 1) {checkboxes[i].checked = true;}
+    }
+</script>
+
+<script type="text/javascript">
+    $('.special.cards .image').dimmer({
+    on: 'hover'
+    });
+</script>
+
+<% include ../partials/footer %>

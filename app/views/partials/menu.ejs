@@ -1,0 +1,28 @@
+<div class="ui menu">
+    <a class="item" href="/betegek">Betegek</a>
+    <a class="item" href="/csoportok">Csoportok</a>
+    <a class="item" href="/qol">QoL</a>
+    <a class="item" href="/users">Felhasznalok</a>
+    <div class="right menu">
+        <a class="item"><%= currentUser.firstname %></a>
+        <a class="item" href="/logout">Kilepes</a>
+    </div>
+</div>
+
+<div class="ui container">
+    <div class="row flex-spaces">
+        <% if(success && success.length){ %>
+            <div class="ui success message">
+                <i class="close icon"></i>
+                <p><%= success %></p>
+            </div>
+        <% } %>
+
+        <% if(error && error.length){ %>
+            <div class="ui negative message">
+                <i class="close icon"></i>
+                <p><%= error %></p>
+            </div>
+        <% } %>
+    </div>
+</div>

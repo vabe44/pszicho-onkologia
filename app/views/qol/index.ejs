@@ -1,0 +1,40 @@
+<% include ../partials/users_indexheader %>
+
+    <div class="ui container">
+
+        <% include ../partials/menu %>
+
+        <h1 class="ui centered inverted header">WHOQOL tesztek</h1>
+
+        <table class="ui celled padded table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>User ID</th>
+                    <th class="single line">Dátum</th>
+                    <th>Alkalom</th>
+                    <th>Megjegyzés</th>
+                    <th>Megtekintés</th>
+                    <th>Módosítás</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <% tesztek.forEach(function(teszt){ %>
+                    <tr>
+                        <td><%= teszt.id %></td>
+                        <td><%= teszt.Beteg.azonosito %></td>
+                        <td class="single line"><%= teszt.datum %></td>
+                        <td><%= teszt.WhoqolAlkalom.kod %></td>
+                        <td><%= teszt.megjegyzes %></td>
+                        <td><a href="/qol/<%= teszt.id %>"><button class="ui basic button"><i class="fa fa-eye" aria-hidden="true"></i></button></a></td>
+                        <td><a href="/qol/<%= teszt.id %>/edit"><button class="ui basic button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a></td>
+                    </tr>
+                <% }); %>
+
+            </tbody>
+        </table>
+
+    </div>
+
+<% include ../partials/footer %>

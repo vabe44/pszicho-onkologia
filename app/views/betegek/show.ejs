@@ -1,0 +1,163 @@
+<% include ../partials/betegek_header %>
+
+    <div class="ui container">
+
+        <% include ../partials/menu %>
+
+        <div class="ui piled segment">
+            <div class="ui grid">
+                <div class="four wide column">
+                    <div class="ui special cards">
+                        <div class="card">
+                            <div class="blurring dimmable image">
+                                <div class="ui dimmer">
+                                    <div class="content">
+                                        <div class="center">
+                                            <div class="ui inverted button">Profil</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <img src="/images/kristy.png">
+                            </div>
+                            <div class="content">
+                                <div class="header"><%= beteg.id %></div>
+                                <div class="meta">
+                                    <h4 class="ui header"><%= beteg.BetegCsoport.nev %></h4>
+                                </div>
+                                <div class="description">
+                                    <%= beteg.megjegyzes === '' ? 'nincs megjegyzés' : beteg.megjegyzes %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="twelve wide column">
+                        <h2 class="ui centered header">Adatok</h2>
+                    <div class="ui grid">
+
+                        <div class="seven wide column">
+
+                            <h4 class="ui header">
+                                ID
+                            </h4>
+                            <p>
+                                <%= beteg.id %>
+                            </p>
+
+                            <h4 class="ui header">
+                                Name
+                            </h4>
+                            <p>
+                                <%= beteg.nev === '' ? 'ismeretlen' : beteg.nev %>
+                            </p>
+
+                            <h4 class="ui header">
+                                Csoport
+                            </h4>
+                            <p>
+                                <%= beteg.csoport %>
+                            </p>
+
+                            <h4 class="ui header">
+                                Fazis
+                            </h4>
+                            <p>
+                                <%= beteg.fazis %>
+                            </p>
+
+                            <h4 class="ui header">
+                                Kutataszaro
+                            </h4>
+                            <p>
+                                <%= beteg.kutataszaro === '' ? 'nem' : beteg.kutataszaro %>
+                            </p>
+
+
+                        </div>
+
+                        <div class="seven wide column">
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+
+
+            </div>
+
+        </div>
+
+        <div class="ui raised segment">
+            <h2 class="ui header">QOL tesztek</h2>
+            <table class="ui sortable celled table">
+                <thead>
+                    <tr>
+                        <th class="sorted descending">Alkalom</th>
+                        <th class="">Allapot</th>
+                        <th class="">Datum</th>
+                        <th class="">Megjegyzes</th>
+                        <th class="">Megtekintes</th>
+                        <th class="">Modositas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (var i = 1; i <= 6; i++) { %>
+                        <tr class="<%= beteg.WhoqolNyersadats.containsByProp('whoqol_alkalom_id', i) === false ? 'negative' : 'positive' %>">
+                            <td><%= i %></td>
+                            <td><%- beteg.WhoqolNyersadats.containsByProp('whoqol_alkalom_id', i) === false ? '<i class="attention icon"></i> Hianyzik' : '<i class="green checkmark icon"></i> Kitoltve' %></td>
+                            <%- beteg.WhoqolNyersadats[beteg.WhoqolNyersadats.containsByProp('whoqol_alkalom_id', i)] === undefined ? '<td class="error"><i class="attention icon"></i> Hianyzik</td>' : '<td>'+ moment(beteg.WhoqolNyersadats[beteg.WhoqolNyersadats.containsByProp("whoqol_alkalom_id", i)].datum).format('LL') +'</td>' %>
+                            <td><%= beteg.WhoqolNyersadats[beteg.WhoqolNyersadats.containsByProp('whoqol_alkalom_id', i)] === undefined ? '' : beteg.WhoqolNyersadats[beteg.WhoqolNyersadats.containsByProp('whoqol_alkalom_id', i)].megjegyzes %></td>
+                            <td><%- beteg.WhoqolNyersadats.containsByProp('whoqol_alkalom_id', i) === false ? '<button class="ui disabled button">Megtekintes</button>' : '<a href="/qol/'+beteg.WhoqolNyersadats[beteg.WhoqolNyersadats.containsByProp("whoqol_alkalom_id", i)].id+'"><button class="ui button">Megtekintes</button></a>' %></td>
+                            <td><%- beteg.WhoqolNyersadats.containsByProp('whoqol_alkalom_id', i) === false ? '<button class="ui disabled button">Modositas</button>' : '<a href="/qol/'+beteg.WhoqolNyersadats[beteg.WhoqolNyersadats.containsByProp("whoqol_alkalom_id", i)].id+'/edit"><button class="ui button">Modositas</button></a>' %></td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="ui raised segment">
+            <h2 class="ui header">PIK tesztek</h2>
+            <table class="ui sortable celled table">
+                <thead>
+                    <tr>
+                        <th class="sorted ascending">Azonosito</th>
+                        <th class="">Teszt</th>
+                        <th class="">Datum</th>
+                        <th class="">Megjegyzes</th>
+                        <th class="">Megtekintes</th>
+                        <th class="">Modositas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% beteg.PikNyersadats.forEach(function(pik){ %>
+                        <tr>
+                            <td><%= pik.azonosito %></td>
+                            <td><%= pik.teszt %></td>
+                            <td><%= moment(pik.datum).format('LL'); %></td>
+                            <td><%= pik.megjegyzes %></td>
+                            <td><a href="/pik/<%= pik.id %>"><button class="ui button">Megtekintes</button></a></td>
+                            <td><a href="/pik/<%= pik.id %>/edit"><button class="ui button">Modositas</button></a></td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+
+<script src='/scripts/fastclick.js'></script>
+<script src='/scripts/jquery-2.2.4.min.js'></script>
+<script src='/scripts/semantic.min.js'></script>
+<script src='/scripts/tablesort.js'></script>
+
+<script type="text/javascript">
+    $('.special.cards .image').dimmer({ on: 'hover' });
+    $('table').tablesort();
+</script>
+
+<% include ../partials/footer %>

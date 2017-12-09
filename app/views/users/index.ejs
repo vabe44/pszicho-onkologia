@@ -1,0 +1,65 @@
+<% include ../partials/users_indexheader %>
+
+    <div class="ui container">
+
+        <% include ../partials/menu %>
+
+        <h1 class="ui centered inverted header">Users</h1>
+
+        <table class="ui celled padded table">
+            <thead>
+                <tr>
+                    <th class="single line">Name</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Created At</th>
+                    <th>Status</th>
+                    <th>About</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <% users.forEach(function(users){ %>
+                    <tr>
+                        <td><%= users.lastname %> <%= users.firstname %></td>
+                        <td><%= users.username %></td>
+                        <td><%= users.email %></td>
+                        <td><%= users.createdAt %></td>
+                        <td><%= users.status %></td>
+                        <td><%= users.about %></td>
+                        <td>
+                            <div class="ui compact menu">
+                                <div class="ui simple dropdown item">
+                                    Select
+                                    <i class="dropdown icon"></i>
+                                    <div class="menu">
+                                        <div class="item">
+                                            <a href="/users/<%= users.id %>/edit">Edit</a>
+                                        </div>
+                                        <div class="item">Disable</div>
+                                        <div class="item">Delete</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                <% }); %>
+
+            </tbody>
+            <tfoot class="full-width">
+                <tr>
+                    <th colspan="7">
+                    <a href="/users/new">
+                        <div class="ui right floated small primary labeled icon button">
+                            <i class="user icon"></i> Add User
+                        </div>
+                    </a>
+                    </th>
+                </tr>
+            </tfoot>
+        </table>
+
+    </div>
+
+<% include ../partials/footer %>
