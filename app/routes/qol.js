@@ -201,7 +201,7 @@ router.get("/:id/edit", mw.isLoggedIn, mw.asyncMiddleware(async (req, res, next)
 
 }));
 
-// UPDATE campground route
+// UPDATE qol route
 router.put("/:id", function(req, res){
 
     const teszt = await models.WhoqolNyersadat.findById(req.params.id);

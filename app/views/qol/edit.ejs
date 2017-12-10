@@ -39,11 +39,7 @@
                                     </div>
                                 </div>
                                 <div class="extra content">
-                                    <span class="right floated">
-                                        <i class="fa fa-clock-o" aria-hidden="true"></i>
-                                        <%= moment(teszt.datum).format('LL') %>
-                                    </span>
-                                    <span>
+                                    <div class="field">
                                         <div class="ui inline dropdown">
                                             <input name="alkalom" value="<%= teszt.whoqol_alkalom_id %>" form="whoqol" type="hidden">
                                             <i class="fa fa-tag" aria-hidden="true"></i>
@@ -55,7 +51,12 @@
                                                 <% }); %>
                                             </div>
                                         </div>
-                                    </span>
+                                    </div>
+                                    <br>
+                                    <div class="field">
+                                        <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                        <input type="date" name="datum" placeholder="<%= moment(teszt.datum).format("YYYY-MM-DD"); %>" value="<%= moment(teszt.datum).format("YYYY-MM-DD"); %>">
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1305,20 +1306,8 @@
 
                     <span class="kerdes">Mi az Ön születési dátuma?</span>
                     <div class="ui form">
-                    <div class="fields">
-                        <div class="two wide field">
-                        <% var szuldat = [] %>
-                        <input type="text" name="szulev" placeholder="<%= szuldat[0] %>">
-                        </div>
-                        <div class="one wide field">
-                        <input type="text"  name="szulho" placeholder="<%= szuldat[1] %>">
-                        </div>
-                        <div class="one wide field">
-                        <input type="text"  name="szulnap" placeholder="<%= szuldat[2] %>">
-                        </div>
-                        <div class="twelve wide disabled field">
-                        <input type="text" placeholder="">
-                        </div>
+                    <div class="field">
+                        <input type="date" name="szuldat" placeholder="<%= moment(teszt.szuletesi_datum).format("YYYY-MM-DD"); %>" value="<%= moment(teszt.szuletesi_datum).format("YYYY-MM-DD"); %>">
                     </div>
 
                     </div>
