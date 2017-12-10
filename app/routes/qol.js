@@ -12,24 +12,18 @@ router.get("/", mw.isLoggedIn, mw.asyncMiddleware(async (req, res, next) => {
         include: [ models.Beteg, models.WhoqolAlkalom ]
     })
 
-    res.render("qol/index", { tesztek });
+    res.render("qol/index", { tesztek, moment });
 
 }));
 
 // CREATE - add new test to DB
-router.post("/", function(req, res){
-    console.log(req.body);
-    var szuldat = req.body.szulev + '-' + req.body.szulho + '-' + req.body.szulnap;
-    var datum = new Date().toISOString().split('T')[0];
-    console.log(szuldat);
+router.post("/", mw.isLoggedIn, mw.asyncMiddleware(async (req, res, next) => {
 
-    knex('whoqol_nyersadatok')
-    .insert({
-        user_id: req.body.nevmezo,
-        csoport: "kontroll",
-        datum: datum,
-        alkalom: "QOL_1",
-        megjegyzes: "ujak",
+    const teszt = await m.WhoqolNyersadat.create({
+        beteg_id: req.body.beteg,
+        whoqol_alkalom_id: req.body.alkalom,
+        datum: req.body.datum,
+        megjegyzes: req.body.megjegyzes,
         f12: req.body.f12,
         f13: req.body.f13,
         f14: req.body.f14,
@@ -132,9 +126,9 @@ router.post("/", function(req, res){
         f244: req.body.f244,
         nem: req.body.nem,
         szuletesi_datum: szuldat,
-        vegzettseg: req.body.vegzettseg,
-        csaladi_allapot: req.body.csaladi_allapot,
-        beteg_e: req.body.beteg_e,
+        whoqol_vegzettseg_id: req.body.vegzettseg,
+        whoqol_csaladi_allapot_id: req.body.csaladi_allapot,
+        whoqol_beteg_e_id: req.body.beteg_e,
         diagnozis: req.body.diagnozis,
         sziv: req.body.sziv === undefined ? 0 : req.body.sziv,
         vernyomas: req.body.vernyomas === undefined ? 0 : req.body.vernyomas,
@@ -149,15 +143,11 @@ router.post("/", function(req, res){
         kronikus_labbetegseg_fajdalom: req.body.kronikus_labbetegseg_fajdalom === undefined ? 0 : req.body.kronikus_labbetegseg_fajdalom,
         aranyer: req.body.aranyer === undefined ? 0 : req.body.aranyer,
         parkinson: req.body.parkinson === undefined ? 0 : req.body.parkinson,
-        egyeb: req.body.egyeb
-    })
-    .then(function() {
-        res.redirect("/qol/kesz");
-    })
-    .catch(function(error) {
-        console.error(error)
+        egyeb: req.body.egyeb_checkbox ? req.body.egyeb : ""
     });
-});
+
+    res.redirect("/qol/<%= teszt.id %>");
+}));
 
 // SHOW - show form to create new test
 router.get("/new", mw.isLoggedIn, mw.asyncMiddleware(async (req, res, next) => {
@@ -171,15 +161,20 @@ router.get("/new", mw.isLoggedIn, mw.asyncMiddleware(async (req, res, next) => {
 
 }));
 
+// SHOW - show test settings page
+router.get("/settings", mw.isLoggedIn, mw.asyncMiddleware(async (req, res, next) => {
+	res.render("qol/settings");
+}));
+
 // SHOW - show completed test
-router.get("/kesz", function(req, res, next) {
+router.get("/kesz", mw.isLoggedIn, mw.asyncMiddleware(async (req, res, next) => {
 	res.render("qol/kesz");
-});
+}));
 
 // SHOW - shows more info about one test
 router.get("/:id", mw.isLoggedIn, mw.asyncMiddleware(async (req, res, next) => {
 
-    const teszt = await models.WhoqolNyersadat.findOne({ where: { id: req.params.id }, include: [ models.WhoqolAlkalom ]});
+    const teszt = await models.WhoqolNyersadat.findOne({ where: { id: req.params.id }, include: [ models.Beteg, models.WhoqolAlkalom ]});
     res.render("qol/show", { teszt, moment });
 
 }));
@@ -202,7 +197,7 @@ router.get("/:id/edit", mw.isLoggedIn, mw.asyncMiddleware(async (req, res, next)
 }));
 
 // UPDATE qol route
-router.put("/:id", function(req, res){
+router.put("/:id", mw.isLoggedIn, mw.asyncMiddleware(async (req, res, next) => {
 
     const teszt = await models.WhoqolNyersadat.findById(req.params.id);
     const szuldat = req.body.szulev + '-' + req.body.szulho + '-' + req.body.szulnap;
@@ -330,23 +325,22 @@ router.put("/:id", function(req, res){
         kronikus_labbetegseg_fajdalom: req.body.kronikus_labbetegseg_fajdalom === undefined ? 0 : req.body.kronikus_labbetegseg_fajdalom,
         aranyer: req.body.aranyer === undefined ? 0 : req.body.aranyer,
         parkinson: req.body.parkinson === undefined ? 0 : req.body.parkinson,
-        egyeb: req.body.egyeb
+        egyeb: req.body.egyeb_checkbox ? req.body.egyeb : ""
     });
 
     req.flash("success", "Siker! Teszt frissítve.");
     res.redirect("/qol/" + req.params.id);
 
-});
+}));
 
-// // DESTROY CAMPGROUND ROUTE
-// router.delete("/:id", function(req, res){
-//    Campground.findByIdAndRemove(req.params.id, function(err){
-//        if(err){
-//            res.redirect("/campgrounds");
-//        } else {
-//            res.redirect("/campgrounds");
-//        }
-//    });
-// });
+// DESTROY CAMPGROUND ROUTE
+router.delete("/:id", mw.isLoggedIn, mw.asyncMiddleware(async (req, res, next) => {
+
+    const teszt = await models.WhoqolNyersadat.findById(req.params.id);
+    await teszt.destroy();
+    req.flash("success", "Siker! Teszt törölve.");
+    res.redirect('/admin/images');
+
+}));
 
 module.exports = router;

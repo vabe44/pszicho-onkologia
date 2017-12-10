@@ -488,143 +488,8 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.INTEGER(4),
             allowNull: true
         },
-        fajd: {
-            type: DataTypes.DECIMAL(7,5),
-            allowNull: true
-        },
-        energia: {
-            type: DataTypes.DECIMAL(7,5),
-            allowNull: true
-        },
-        alvas: {
-            type: DataTypes.DECIMAL(7,5),
-            allowNull: true
-        },
-        pozerz: {
-            type: DataTypes.DECIMAL(7,5),
-            allowNull: true
-        },
-        gondolk: {
-            type: DataTypes.DECIMAL(7,5),
-            allowNull: true
-        },
-        onertek: {
-            type: DataTypes.DECIMAL(7,5),
-            allowNull: true
-        },
-        testkep: {
-            type: DataTypes.DECIMAL(7,5),
-            allowNull: true
-        },
-        negerz: {
-            type: DataTypes.DECIMAL(7,5),
-            allowNull: true
-        },
-        mobil: {
-            type: DataTypes.DECIMAL(7,5),
-            allowNull: true
-        },
-        aktiv: {
-            type: DataTypes.DECIMAL(7,5),
-            allowNull: true
-        },
-        gyogyszerfugg: {
-            type: DataTypes.DECIMAL(7,5),
-            allowNull: true
-        },
-        munkakep: {
-            type: DataTypes.DECIMAL(7,5),
-            allowNull: true
-        },
-        szoc_kapcs: {
-            type: DataTypes.DECIMAL(7,5),
-            allowNull: true
-        },
-        szoc_tam: {
-            type: DataTypes.DECIMAL(7,5),
-            allowNull: true
-        },
-        szex: {
-            type: DataTypes.DECIMAL(7,5),
-            allowNull: true
-        },
-        biztons: {
-            type: DataTypes.DECIMAL(7,5),
-            allowNull: true
-        },
-        otthonkorny: {
-            type: DataTypes.DECIMAL(7,5),
-            allowNull: true
-        },
-        anyagi_ef: {
-            type: DataTypes.DECIMAL(7,5),
-            allowNull: true
-        },
-        egeszsegi_ellat: {
-            type: DataTypes.DECIMAL(7,5),
-            allowNull: true
-        },
-        inform: {
-            type: DataTypes.DECIMAL(7,5),
-            allowNull: true
-        },
-        szabadido: {
-            type: DataTypes.DECIMAL(7,5),
-            allowNull: true
-        },
-        fiz_korny: {
-            type: DataTypes.DECIMAL(7,5),
-            allowNull: true
-        },
-        kozlek: {
-            type: DataTypes.DECIMAL(7,5),
-            allowNull: true
-        },
-        spiritu_d: {
-            type: DataTypes.DECIMAL(7,5),
-            allowNull: true
-        },
-        altalanos: {
-            type: DataTypes.DECIMAL(7,5),
-            allowNull: true
-        },
-        a24_fajd: {
-            field: '24_fajd',
-            type: DataTypes.DECIMAL(7,5),
-            allowNull: true
-        },
-        a24_negerz: {
-            field: '24_negerz',
-            type: DataTypes.DECIMAL(7,5),
-            allowNull: true
-        },
-        a24_gyogyszer: {
-            field: '24_gyogyszer',
-            type: DataTypes.DECIMAL(7,5),
-            allowNull: true
-        },
-        fizikai_d: {
-            type: DataTypes.DECIMAL(7,5),
-            allowNull: true
-        },
-        psziches_d: {
-            type: DataTypes.DECIMAL(7,5),
-            allowNull: true
-        },
-        fuggetlen_d: {
-            type: DataTypes.DECIMAL(7,5),
-            allowNull: true
-        },
-        szoc_d: {
-            type: DataTypes.DECIMAL(7,5),
-            allowNull: true
-        },
-        korny_d: {
-            type: DataTypes.DECIMAL(7,5),
-            allowNull: true
-        }
     }, {
-            tableName: 'whoqol_nyersadatok_new',
+            tableName: 'whoqol_nyersadatok',
             underscored: true,
             classMethods: {
                 associate: function (models) {
@@ -634,6 +499,239 @@ module.exports = function (sequelize, DataTypes) {
                     models.WhoqolNyersadat.belongsTo(models.WhoqolCsaladiAllapot);
                     models.WhoqolNyersadat.belongsTo(models.WhoqolVegzettseg);
                 }
-            }
+            },
+            getterMethods: {
+                fajd() {
+                    if( (this.f12 * this.f13 * this.f14 * this.f11) == 0 ) {
+                        return 0;
+                    } else {
+                        return ((this.f12 + this.f13 + this.f14 + this.f11)/4)*4;
+                    }
+                },
+                energia() {
+                    if( (this.f22 * this.f24 * this.f21 * this.f23) == 0 ) {
+                        return 0;
+                    } else {
+                        return (((6-this.f22) + (6-this.f24) + this.f21 + this.f23)/4)*4;
+                    }
+                },
+                alvas() {
+                    if( (this.f32 * this.f34 * this.f33 * this.f31) == 0 ) {
+                        return 0;
+                    } else {
+                        return (((6-this.f32) + (6-this.f34) + this.f33 + this.f31)/4)*4;
+                    }
+                },
+                pozerz() {
+                    if( (this.f41 * this.f43 * this.f44 * this.f42) == 0 ) {
+                        return 0;
+                    } else {
+                        return ((this.f41 + this.f43 + this.f44 + this.f42)/4)*4;
+                    }
+                },
+                gondolk() {
+                    if( (this.f53 * this.f52 * this.f54 * this.f51) == 0 ) {
+                        return 0;
+                    } else {
+                        return ((this.f53 + this.f52 + this.f54 + this.f51)/4)*4;
+                    }
+                },
+                onertek() {
+                    if( (this.f61 * this.f62 * this.f63 * this.f64) == 0 ) {
+                        return 0;
+                    } else {
+                        return ((this.f61 + this.f62 + this.f63 + this.f64)/4)*4;
+                    }
+                },
+                testkep() {
+                    if( (this.f72 * this.f73 * this.f71 * this.f74) == 0 ) {
+                        return 0;
+                    } else {
+                        return (((6-this.f72) + (6-this.f73) + this.f71 + this.f74)/4)*4;
+                    }
+                },
+                negerz() {
+                    if( (this.f82 * this.f83 * this.f84 * this.f81) == 0 ) {
+                        return 0;
+                    } else {
+                        return ((this.f82 + this.f83 + this.f84 + this.f81)/4)*4;
+                    }
+                },
+                mobil() {
+                    if( (this.f91 * this.f93 * this.f94 * this.f92) == 0 ) {
+                        return 0;
+                    } else {
+                        return (((6-this.f93) + (6-this.f94) + this.f91 + this.f92)/4)*4;
+                    }
+                },
+                aktiv() {
+                    if( (this.f102 * this.f104 * this.f101 * this.f103) == 0 ) {
+                        return 0;
+                    } else {
+                        return (((6-this.f102) + (6-this.f104) + this.f101 + this.f103)/4)*4;
+                    }
+                },
+                gyogyszerfugg() {
+                    if( (this.f112 * this.f113 * this.f114 * this.f111) == 0 ) {
+                        return 0;
+                    } else {
+                        return ((this.f112 + this.f113 + this.f114 + this.f111)/4)*4;
+                    }
+                },
+                munkakep() {
+                    if( (this.f121 * this.f122 * this.f124 * this.f123) == 0 ) {
+                        return 0;
+                    } else {
+                        return ((this.f121 + this.f122 + this.f124 + this.f123)/4)*4;
+                    }
+                },
+                szoc_kapcs() {
+                    if( (this.f131 * this.f133 * this.f134 * this.f132) == 0 ) {
+                        return 0;
+                    } else {
+                        return (((6-this.f131) + this.f133 + this.f134 + this.f132)/4)*4;
+                    }
+                },
+                szoc_tam() {
+                    if( (this.f141 * this.f142 * this.f143 * this.f144) == 0 ) {
+                        return 0;
+                    } else {
+                        return ((this.f141 + this.f142 + this.f143 + this.f144)/4)*4;
+                    }
+                },
+                szex() {
+                    if( (this.f152 * this.f154 * this.f153 * this.f151) == 0 ) {
+                        return 0;
+                    } else {
+                        return (((6-this.f154) + this.f152 + this.f153 + this.f151)/4)*4;
+                    }
+                },
+                biztons() {
+                    if( (this.f161 * this.f162 * this.f163 * this.f164) == 0 ) {
+                        return 0;
+                    } else {
+                        return (((6-this.f163) + this.f161 + this.f162 + this.f164)/4)*4;
+                    }
+                },
+                otthonkorny() {
+                    if( (this.f171 * this.f174 * this.f172 * this.f173) == 0 ) {
+                        return 0;
+                    } else {
+                        return ((this.f171 + this.f174 + this.f172 + this.f173)/4)*4;
+                    }
+                },
+                anyagi_ef() {
+                    if( (this.f182 * this.f184 * this.f181 * this.f183) == 0 ) {
+                        return 0;
+                    } else {
+                        return (((6-this.f182) + (6-this.f184) + this.f181 + this.f183)/4)*4;
+                    }
+                },
+                egeszsegi_ellat() {
+                    if( (this.f191 * this.f193 * this.f194 * this.f192) == 0 ) {
+                        return 0;
+                    } else {
+                        return ((this.f191 + this.f193 + this.f194 + this.f192)/4)*4;
+                    }
+                },
+                inform() {
+                    if( (this.f201 * this.f202 * this.f203 * this.f204) == 0 ) {
+                        return 0;
+                    } else {
+                        return ((this.f201 + this.f202 + this.f203 + this.f204)/4)*4;
+                    }
+                },
+                szabadido() {
+                    if( (this.f213 * this.f211 * this.f212 * this.f214) == 0 ) {
+                        return 0;
+                    } else {
+                        return ((this.f213 + this.f211 + this.f212 + this.f214)/4)*4;
+                    }
+                },
+                fiz_korny() {
+                    if( (this.f221 * this.f222 * this.f223 * this.f224) == 0 ) {
+                        return 0;
+                    } else {
+                        return (((6-this.f222) + this.f221 + this.f223 + this.f224)/4)*4;
+                    }
+                },
+                kozlek() {
+                    if( (this.f232 * this.f234 * this.f231 * this.f233) == 0 ) {
+                        return 0;
+                    } else {
+                        return (((6-this.f232) + (6-this.f234) + this.f231 + this.f233)/4)*4;
+                    }
+                },
+                spiritu_d() {
+                    if( (this.f241 * this.f242 * this.f243 * this.f244) == 0 ) {
+                        return 0;
+                    } else {
+                        return ((this.f241 + this.f242 + this.f243 + this.f244)/4)*4;
+                    }
+                },
+                altalanos() {
+                    if( (this.g2 * this.g3 * this.g4 * this.g1) == 0 ) {
+                        return 0;
+                    } else {
+                        return ((this.g2 + this.g3 + this.g4 + this.g1)/4)*4;
+                    }
+                },
+                fajd24() {
+                    if(this.get('fajd') == 0) {
+                        return 0;
+                    } else {
+                        return 24 - this.get('fajd');
+                    }
+                },
+                negerz24() {
+                    if(this.get('negerz') == 0) {
+                        return 0;
+                    } else {
+                        return 24 - this.get('negerz');
+                    }
+                },
+                gyogyszer24() {
+                    if(this.get('gyogyszerfugg') == 0) {
+                        return 0;
+                    } else {
+                        return 24 - this.get('gyogyszerfugg');
+                    }
+                },
+                fizikai_d() {
+                    if( (this.get('energia') * this.get('alvas') * this.get('fajd24')) == 0 ) {
+                        return 0;
+                    } else {
+                        return (this.get('energia') + this.get('alvas') + this.get('fajd24'))/3;
+                    }
+                },
+                psziches_d() {
+                    if( (this.get('pozerz') * this.get('gondolk') * this.get('onertek') * this.get('testkep') * this.get('negerz24')) == 0 ) {
+                        return 0;
+                    } else {
+                        return (this.get('pozerz') + this.get('gondolk') + this.get('onertek') + this.get('testkep') + this.get('negerz24'))/5;
+                    }
+                },
+                fuggetlen_d() {
+                    if( (this.get('mobil') * this.get('aktiv') * this.get('munkakep') + this.get('gyogyszer24')) == 0 ) {
+                        return 0;
+                    } else {
+                        return (this.get('mobil') + this.get('aktiv') + this.get('munkakep') + this.get('gyogyszer24')) /4;
+                    }
+                },
+                szoc_d() {
+                    if( (this.get('szoc_kapcs') * this.get('szoc_tam') * this.get('szex')) == 0 ) {
+                        return 0;
+                    } else {
+                        return (this.get('szoc_kapcs') + this.get('szoc_tam') + this.get('szex'))/3;
+                    }
+                },
+                korny_d() {
+                    if( (this.get('biztons') * this.get('otthonkorny') * this.get('anyagi_ef') * this.get('egeszsegi_ellat') * this.get('inform') * this.get('szabadido') * this.get('fiz_korny') * this.get('kozlek')) == 0 ) {
+                        return 0;
+                    } else {
+                        return (this.get('biztons') + this.get('otthonkorny') + this.get('anyagi_ef') + this.get('egeszsegi_ellat') + this.get('inform') + this.get('szabadido') + this.get('fiz_korny') + this.get('kozlek'))/8;
+                    }
+                }
+            },
         });
 };

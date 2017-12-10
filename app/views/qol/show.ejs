@@ -20,7 +20,7 @@
                                 <img src="/images/kristy.png">
                             </div>
                             <div class="content">
-                                <div class="header"><%= teszt.beteg_id %></div>
+                                <div class="header"><%= teszt.Beteg.azonosito %></div>
                                 <div class="meta">
                                     <h4 class="ui header"><%= teszt.csoport %></h4>
                                 </div>
@@ -45,115 +45,115 @@
                     <div class="ui grid">
 
                         <div class="five wide column">
-                            <h4 class="ui header">Fizikai kapacitás<a class="ui circular label"><%= Number(teszt.fizikai_d).toFixed(2) %></a></h4>
+                            <h4 class="ui header">Fizikai kapacitás<a class="ui circular label"><%= Number(teszt.get('fizikai_d')).toFixed(2) %></a></h4>
                             <a class="ui red image label">
                                 <span class="eredmeny">Fájdalom és diszkomfort</span>
-                                <div class="detail"><%= teszt.fajd %></div>
+                                <div class="detail"><%= teszt.get('fajd') %></div>
                             </a><br>
                             <a class="ui yellow image label">
                                 <span class="eredmeny">Energia és fáradtság</span>
-                                <div class="detail"><%= teszt.energia %></div>
+                                <div class="detail"><%= teszt.get('energia') %></div>
                             </a><br>
                             <a class="ui blue image label">
                                 <span class="eredmeny">Alvás és pihenés</span>
-                                <div class="detail"><%= teszt.alvas %></div>
+                                <div class="detail"><%= teszt.get('alvas') %></div>
                             </a><br>
 
-                            <h4 class="ui header">Pszichológiai állapot<a class="ui circular label"><%= Number(teszt.psziches_d).toFixed(2) %></a></h4>
+                            <h4 class="ui header">Pszichológiai állapot<a class="ui circular label"><%= Number(teszt.get('psziches_d')).toFixed(2) %></a></h4>
                             <a class="ui green image label">
                                 <span class="eredmeny">Pozitív érzések</span>
-                                <div class="detail"><%= teszt.pozerz %></div>
+                                <div class="detail"><%= teszt.get('pozerz') %></div>
                             </a><br>
                             <a class="ui teal image label">
                                 <span class="eredmeny">Gondolkodás, tanulás</span>
-                                <div class="detail"><%= teszt.gondolk %></div>
+                                <div class="detail"><%= teszt.get('gondolk') %></div>
                             </a><br>
                             <a class="ui violet image label">
                                 <span class="eredmeny">Önértékelés</span>
-                                <div class="detail"><%= teszt.onertek %></div>
+                                <div class="detail"><%= teszt.get('onertek') %></div>
                             </a><br>
                             <a class="ui brown image label">
                                 <span class="eredmeny">Testkép</span>
-                                <div class="detail"><%= teszt.testkep %></div>
+                                <div class="detail"><%= teszt.get('testkep') %></div>
                             </a><br>
                             <a class="ui grey image label">
                                 <span class="eredmeny">Negatív érzések</span>
-                                <div class="detail"><%= teszt.negerz %></div>
+                                <div class="detail"><%= teszt.get('negerz') %></div>
                             </a><br>
                         </div>
 
                         <div class="five wide column">
-                            <h4 class="ui header">Függetlenség<a class="ui circular label"><%= Number(teszt.fuggetlen_d).toFixed(2) %></a></h4>
+                            <h4 class="ui header">Függetlenség<a class="ui circular label"><%= Number(teszt.get('fuggetlen_d')).toFixed(2) %></a></h4>
                             <a class="ui olive image label">
                                 <span class="eredmeny">Mobilitás</span>
-                                <div class="detail"><%= teszt.mobil %></div>
+                                <div class="detail"><%= teszt.get('mobil') %></div>
                             </a><br>
                             <a class="ui yellow image label">
                                 <span class="eredmeny">Mindennapi tevékenységek</span>
-                                <div class="detail"><%= teszt.aktiv %></div>
+                                <div class="detail"><%= teszt.get('aktiv') %></div>
                             </a><br>
                             <a class="ui blue image label">
                                 <span class="eredmeny">Gyógyszerfüggőség</span>
-                                <div class="detail"><%= teszt.gyogyszerfugg %></div>
+                                <div class="detail"><%= teszt.get('gyogyszerfugg') %></div>
                             </a><br>
                             <a class="ui violet image label">
                                 <span class="eredmeny">Munkaképesség</span>
-                                <div class="detail"><%= teszt.munkakep %></div>
+                                <div class="detail"><%= teszt.get('munkakep') %></div>
                             </a><br>
 
-                            <h4 class="ui header">Társas kapcsolatok<a class="ui circular label"><%= Number(teszt.szoc_d).toFixed(2) %></a></h4>
+                            <h4 class="ui header">Társas kapcsolatok<a class="ui circular label"><%= Number(teszt.get('szoc_d')).toFixed(2) %></a></h4>
                             <a class="ui green image label">
                                 <span class="eredmeny">Szociális kapcsolatok</span>
-                                <div class="detail"><%= teszt.szoc_kapcs %></div>
+                                <div class="detail"><%= teszt.get('szoc_kapcs') %></div>
                             </a><br>
                             <a class="ui teal image label">
                                 <span class="eredmeny">Szociális támogatás</span>
-                                <div class="detail"><%= teszt.szoc_tam %></div>
+                                <div class="detail"><%= teszt.get('szoc_tam') %></div>
                             </a><br>
                             <a class="ui pink image label">
                                 <span class="eredmeny">Szexuális aktivitás</span>
-                                <div class="detail"><%= teszt.szex %></div>
+                                <div class="detail"><%= teszt.get('szex') %></div>
                             </a><br>
                         </div>
 
                         <div class="five wide column">
-                            <h4 class="ui header">Környezet<a class="ui circular label"><%= Number(teszt.korny_d).toFixed(2) %></a></h4>
+                            <h4 class="ui header">Környezet<a class="ui circular label"><%= Number(teszt.get('korny_d')).toFixed(2) %></a></h4>
                             <a class="ui blue image label">
                                 <span class="eredmeny">Biztonságérzet</span>
-                                <div class="detail"><%= teszt.biztons %></div>
+                                <div class="detail"><%= teszt.get('biztons') %></div>
                             </a><br>
                             <a class="ui olive image label">
                                 <span class="eredmeny">Otthonkörnyezet</span>
-                                <div class="detail"><%= teszt.otthonkorny %></div>
+                                <div class="detail"><%= teszt.get('otthonkorny') %></div>
                             </a><br>
                             <a class="ui green image label">
                                 <span class="eredmeny">Anyagi erőforrások</span>
-                                <div class="detail"><%= teszt.anyagi_ef %></div>
+                                <div class="detail"><%= teszt.get('anyagi_ef') %></div>
                             </a><br>
                             <a class="ui pink image label">
                                 <span class="eredmeny">Egészségügyi ellátás</span>
-                                <div class="detail"><%= teszt.egeszsegi_ellat %></div>
+                                <div class="detail"><%= teszt.get('egeszsegi_ellat') %></div>
                             </a><br>
                             <a class="ui purple image label">
                                 <span class="eredmeny">Új információk</span>
-                                <div class="detail"><%= teszt.inform %></div>
+                                <div class="detail"><%= teszt.get('inform') %></div>
                             </a><br>
                             <a class="ui violet image label">
                                 <span class="eredmeny">Szabadidő</span>
-                                <div class="detail"><%= teszt.szabadido %></div>
+                                <div class="detail"><%= teszt.get('szabadido') %></div>
                             </a><br>
                             <a class="ui yellow image label">
                                 <span class="eredmeny">Fizikai környezet</span>
-                                <div class="detail"><%= teszt.fiz_korny %></div>
+                                <div class="detail"><%= teszt.get('fiz_korny') %></div>
                             </a><br>
                             <a class="ui orange image label">
                                 <span class="eredmeny">Közlekedés</span>
-                                <div class="detail"><%= teszt.kozlek %></div>
+                                <div class="detail"><%= teszt.get('kozlek') %></div>
                             </a><br>
-                            <h4 class="ui header">Spiritualitás<a class="ui circular label"><%= Number(teszt.spiritu_d).toFixed(2) %></a></h4>
+                            <h4 class="ui header">Spiritualitás<a class="ui circular label"><%= Number(teszt.get('spiritu_d')).toFixed(2) %></a></h4>
                             <a class="ui blue image label">
                                 <span class="eredmeny">Általános QOL</span>
-                                <div class="detail"><%= teszt.altalanos %></div>
+                                <div class="detail"><%= teszt.get('altalanos') %></div>
                             </a><br>
                         </div>
                     </div>

@@ -1,4 +1,4 @@
-<% include ../partials/users_indexheader %>
+<% include ../partials/header %>
 
     <div class="ui container">
 
@@ -24,7 +24,7 @@
                     <tr>
                         <td><%= teszt.id %></td>
                         <td><%= teszt.Beteg.azonosito %></td>
-                        <td class="single line"><%= teszt.datum %></td>
+                        <td class="single line"><%= moment(teszt.datum).format('LL') %></td>
                         <td><%= teszt.WhoqolAlkalom.kod %></td>
                         <td><%= teszt.megjegyzes %></td>
                         <td><a href="/qol/<%= teszt.id %>"><button class="ui basic button"><i class="fa fa-eye" aria-hidden="true"></i></button></a></td>
