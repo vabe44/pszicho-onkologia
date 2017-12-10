@@ -1,22 +1,20 @@
-var express     = require("express");
-var router      = express.Router();
-var knex        = require('../config/knex/config');
-var models      = require("../models");
+const express = require('express');
+const router = express.Router();
+const mw = require("../middlewares");
+const knex   = require('../config/knex/config');
+const models = require("../models");
+const moment = require('moment');
 
 // INDEX - show all tests
-router.get("/", function(req, res) {
+router.get("/", mw.isLoggedIn, mw.asyncMiddleware(async (req, res, next) => {
 
-    // find multiple entries
-    models.WhoqolNyersadat.findAll({
+    const tesztek = await models.WhoqolNyersadat.findAll({
         include: [ models.Beteg, models.WhoqolAlkalom ]
-    }).then(tesztek => {
-        // csoportok will be an array of all Csoport instances
-        res.render("qol/index", {
-            tesztek: tesztek
-        });
-    });
+    })
 
-});
+    res.render("qol/index", { tesztek });
+
+}));
 
 // CREATE - add new test to DB
 router.post("/", function(req, res){
@@ -161,74 +159,57 @@ router.post("/", function(req, res){
     });
 });
 
-// NEW - show form to create new campground
-router.get("/kesz", function(req, res) {
+// SHOW - show form to create new test
+router.get("/new", mw.isLoggedIn, mw.asyncMiddleware(async (req, res, next) => {
+
+    const betegek = await models.Beteg.findAll();
+    const alkalmak = await models.WhoqolAlkalom.findAll();
+    const csaladiAllapotok = await models.WhoqolCsaladiAllapot.findAll();
+    const vegzettsegek = await models.WhoqolVegzettseg.findAll();
+    const betegE = await models.WhoqolBetegE.findAll();
+    res.render("qol/new", { betegek, alkalmak, csaladiAllapotok, vegzettsegek, betegE });
+
+}));
+
+// SHOW - show completed test
+router.get("/kesz", function(req, res, next) {
 	res.render("qol/kesz");
 });
 
-// NEW - show form to create new campground
-router.get("/new", function(req, res) {
-	res.render("qol/new");
-});
+// SHOW - shows more info about one test
+router.get("/:id", mw.isLoggedIn, mw.asyncMiddleware(async (req, res, next) => {
 
-// SHOW - shows more info about one campground
-router.get("/:id", function(req, res) {
-    knex('whoqol_nyersadatok').where('id', req.params.id)
-    .then(function(rows) {
-        res.render("qol/show", {rows:rows});
-    })
-    .catch(function(error) {
-        console.error(error)
-    });
-});
+    const teszt = await models.WhoqolNyersadat.findOne({ where: { id: req.params.id }, include: [ models.WhoqolAlkalom ]});
+    res.render("qol/show", { teszt, moment });
+
+}));
 
 // EDIT qol route
-router.get("/:id/edit", function(req, res) {
-    var data = {};
-    knex('whoqol_nyersadatok').where('id', req.params.id)
-    .then(function(rows) {
-        data.kerdoiv = rows;
-    })
-    .then(function(data) {
-        return knex.select('id').from('betegek').orderBy('id', 'asc')
-    })
-    .then(function(rows) {
-        data.betegek = rows;
-    })
-    .then(function(data) {
-        return knex.select('kod').from('whoqol_alkalmak').orderBy('kod', 'asc')
-    })
-    .then(function(rows) {
-        data.alkalmak = rows;
-    })
-    .then(function(data) {
-        return knex.select('kod').from('whoqol_csoportok').orderBy('kod', 'asc')
-    })
-    .then(function(rows) {
-        data.csoportok = rows;
-    })
-    .then(function() {
-        console.log(data);
-        res.render("qol/edit", {data:data});
-    })
-    .catch(function(error) {
-        console.error(error)
+router.get("/:id/edit", mw.isLoggedIn, mw.asyncMiddleware(async (req, res, next) => {
+
+    const teszt = await models.WhoqolNyersadat.findOne({
+        where: { id: req.params.id },
+        include: [{ all: true, nested: true }]
     });
-});
+
+    const betegek = await models.Beteg.findAll();
+    const alkalmak = await models.WhoqolAlkalom.findAll();
+    const csaladiAllapotok = await models.WhoqolCsaladiAllapot.findAll();
+    const vegzettsegek = await models.WhoqolVegzettseg.findAll();
+    const betegE = await models.WhoqolBetegE.findAll();
+    res.render("qol/edit", { teszt, betegek, alkalmak, csaladiAllapotok, vegzettsegek, betegE, moment });
+
+}));
 
 // UPDATE campground route
 router.put("/:id", function(req, res){
 
-    console.log(req.body);
-    var szuldat = req.body.szulev + '-' + req.body.szulho + '-' + req.body.szulnap
-
-    knex('whoqol_nyersadatok')
-    .where('id', req.params.id)
-    .update({
-        user_id: req.body.user_id,
-        csoport: req.body.csoport,
+    const teszt = await models.WhoqolNyersadat.findById(req.params.id);
+    const szuldat = req.body.szulev + '-' + req.body.szulho + '-' + req.body.szulnap;
+    await teszt.update({
+        beteg_id: req.body.beteg,
+        whoqol_alkalom_id: req.body.alkalom,
         datum: req.body.datum,
-        alkalom: req.body.alkalom,
         megjegyzes: req.body.megjegyzes,
         f12: req.body.f12,
         f13: req.body.f13,
@@ -332,9 +313,9 @@ router.put("/:id", function(req, res){
         f244: req.body.f244,
         nem: req.body.nem,
         szuletesi_datum: szuldat,
-        vegzettseg: req.body.vegzettseg,
-        csaladi_allapot: req.body.csaladi_allapot,
-        beteg_e: req.body.beteg_e,
+        whoqol_vegzettseg_id: req.body.vegzettseg,
+        whoqol_csaladi_allapot_id: req.body.csaladi_allapot,
+        whoqol_beteg_e_id: req.body.beteg_e,
         diagnozis: req.body.diagnozis,
         sziv: req.body.sziv === undefined ? 0 : req.body.sziv,
         vernyomas: req.body.vernyomas === undefined ? 0 : req.body.vernyomas,
@@ -350,13 +331,11 @@ router.put("/:id", function(req, res){
         aranyer: req.body.aranyer === undefined ? 0 : req.body.aranyer,
         parkinson: req.body.parkinson === undefined ? 0 : req.body.parkinson,
         egyeb: req.body.egyeb
-    })
-    .then(function() {
-        res.redirect("/qol/" + req.params.id);
-    })
-    .catch(function(error) {
-        console.error(error)
     });
+
+    req.flash("success", "Siker! Teszt frissítve.");
+    res.redirect("/qol/" + req.params.id);
+
 });
 
 // // DESTROY CAMPGROUND ROUTE

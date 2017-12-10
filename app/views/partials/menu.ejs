@@ -1,8 +1,47 @@
 <div class="ui menu">
-    <a class="item" href="/betegek">Betegek</a>
-    <a class="item" href="/csoportok">Csoportok</a>
-    <a class="item" href="/qol">QoL</a>
+
+    <a class="betegek item">
+        Betegek
+    </a>
+    <div class="ui popup bottom left transition hidden">
+        <div class="ui one column relaxed equal height divided grid">
+            <div class="column">
+                <h4 class="ui header">Betegek</h4>
+                <div class="ui link list">
+                    <a class="item" href="/betegek/new">Új beteg</a>
+                    <a class="item" href="/betegek">Összes beteg</a>
+                    <a class="item" href="/csoportok">Csoportok</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a class="tesztek item">
+        Tesztek
+    </a>
+    <div class="ui popup bottom left transition hidden">
+    <div class="ui two column relaxed equal height divided grid">
+        <div class="column">
+        <h4 class="ui header">QoL</h4>
+            <div class="ui link list">
+                <a class="item">Új teszt</a>
+                <a class="item" href="/qol">Kitöltöttek</a>
+                <a class="item">Beállítások</a>
+            </div>
+        </div>
+        <div class="column">
+        <h4 class="ui header">PIK</h4>
+            <div class="ui link list">
+                <a class="item">Új teszt</a>
+                <a class="item" href="/pik">Kitöltöttek</a>
+                <a class="item">Beállítások</a>
+            </div>
+        </div>
+    </div>
+    </div>
+
     <a class="item" href="/users">Felhasznalok</a>
+
     <div class="right menu">
         <a class="item"><%= currentUser.firstname %></a>
         <a class="item" href="/logout">Kilepes</a>

@@ -7,10 +7,31 @@
             <div>
                 <form name="whoqol" id="whoqol" action="/qol" method="POST">
 
-                    <div class="ui form" id="nevmezo">
-                        <div class="field">
-                            <label for="nevmezo">Név</label>
-                            <textarea name="nevmezo" form="whoqol" rows="1"></textarea>
+                    <div class="ui form">
+                        <div class="two fields">
+
+                            <div class="field">
+                                <label for="beteg">Beteg</label>
+                                <select class="ui fluid search selection dropdown" name="beteg" id="beteg-search-select">
+                                    <% betegek.forEach(function(beteg){ %>
+                                        <option value="<%= beteg.id %>">
+                                            <%= beteg.azonosito %>
+                                        </option>
+                                    <% }); %>
+                                </select>
+                            </div>
+
+                            <div class="field">
+                                <label for="alkalom">Alkalom</label>
+                                <select class="ui fluid search selection dropdown" name="alkalom" id="alkalom-search-select">
+                                    <% alkalmak.forEach(function(alkalom){ %>
+                                        <option value="<%= alkalom.id %>">
+                                            <%= alkalom.kod %>
+                                        </option>
+                                    <% }); %>
+                                </select>
+                            </div>
+
                         </div>
                     </div>
 
@@ -1156,30 +1177,27 @@
                     <span class="kerdes">Mi a legmagasabb iskolai végzettsége?</span>
                     <br/>
                     <group class="inline-radio" id="vegzettseg">
-                        <div><input type="radio" name="vegzettseg" value="1"><label>nincs</label></div>
-                        <div><input type="radio" name="vegzettseg" value="2"><label>általános iskola</label></div>
-                        <div><input type="radio" name="vegzettseg" value="3"><label>középiskola</label></div>
-                        <div><input type="radio" name="vegzettseg" value="4"><label>főiskola / egyetem</label></div>
+                        <% vegzettsegek.forEach(function(vegzettseg){ %>
+                            <div><input type="radio" name="vegzettseg" value="<%= vegzettseg.id %>"><label><%= vegzettseg.leiras %></label></div>
+                        <% }); %>
                     </group>
                     <br/>
 
                     <span class="kerdes">Mi a családi állapota?</span>
                     <br/>
                     <group class="inline-radio" id="csaladi_allapot">
-                        <div><input type="radio" name="csaladi_allapot" value="1"><label>egyedülálló</label></div>
-                        <div><input type="radio" name="csaladi_allapot" value="2"><label>külön él</label></div>
-                        <div><input type="radio" name="csaladi_allapot" value="3"><label>házas</label></div>
-                        <div><input type="radio" name="csaladi_allapot" value="4"><label>elvált</label></div>
-                        <div><input type="radio" name="csaladi_allapot" value="5"><label>élettársa van</label></div>
-                        <div><input type="radio" name="csaladi_allapot" value="6"><label>özvegy</label></div>
+                        <% csaladiAllapotok.forEach(function(allapot){ %>
+                            <div><input type="radio" name="csaladi_allapot" value="<%= allapot.id %>"><label><%= allapot.leiras %></label></div>
+                        <% }); %>
                     </group>
                     <br/>
 
                     <span class="kerdes">Beteg-e jelenleg?</span>
                     <br/>
                     <group class="inline-radio" id="beteg_e">
-                        <div><input type="radio" name="beteg_e" class="beteg_e" value="1"><label>nem</label></div>
-                        <div><input type="radio" name="beteg_e" class="beteg_e" value="2"><label>igen</label></div>
+                        <% betegE.forEach(function(allapot){ %>
+                            <div><input type="radio" name="beteg_e" class="beteg_e" value="<%= allapot.id %>"><label><%= allapot.leiras %></label></div>
+                        <% }); %>
                     </group>
                     <br/>
                     <div class="ui form" id="diagnozismezo">
@@ -1227,6 +1245,11 @@
 <script src='/scripts/fastclick.js'></script>
 <script src='/scripts/jquery-2.2.4.min.js'></script>
 <script src='/scripts/semantic.min.js'></script>
+
+<script>
+    $('#beteg-search-select').dropdown();
+</script>
+
 <script type="text/javascript">
     // Included fastclick.js to make the inputs quicker to respond to taps on mobile
 

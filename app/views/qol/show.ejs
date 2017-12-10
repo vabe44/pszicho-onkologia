@@ -13,29 +13,29 @@
                                 <div class="ui dimmer">
                                     <div class="content">
                                         <div class="center">
-                                            <div class="ui inverted button">Profil</div>
+                                            <a href="/betegek/<%= teszt.beteg_id %>"><div class="ui inverted button">Profil</div></a>
                                         </div>
                                     </div>
                                 </div>
                                 <img src="/images/kristy.png">
                             </div>
                             <div class="content">
-                                <div class="header"><%= rows[0].user_id %></div>
+                                <div class="header"><%= teszt.beteg_id %></div>
                                 <div class="meta">
-                                    <h4 class="ui header"><%= rows[0].csoport %></h4>
+                                    <h4 class="ui header"><%= teszt.csoport %></h4>
                                 </div>
                                 <div class="description">
-                                    <%= rows[0].megjegyzes %>
+                                    <%= teszt.megjegyzes %>
                                 </div>
                             </div>
                             <div class="extra content">
                                 <span class="right floated">
                                     <i class="fa fa-clock-o" aria-hidden="true"></i>
-                                    <%= rows[0].datum %>
+                                    <%= moment(teszt.datum).format('LL') %>
                                 </span>
                                 <span>
                                     <i class="fa fa-tag" aria-hidden="true"></i>
-                                    <%= rows[0].alkalom %>
+                                    <%= teszt.WhoqolAlkalom.kod %>
                                 </span>
                             </div>
                         </div>
@@ -45,115 +45,115 @@
                     <div class="ui grid">
 
                         <div class="five wide column">
-                            <h4 class="ui header">Fizikai kapacitás<a class="ui circular label"><%= rows[0].fizikai_d.toFixed(2) %></a></h4>
+                            <h4 class="ui header">Fizikai kapacitás<a class="ui circular label"><%= Number(teszt.fizikai_d).toFixed(2) %></a></h4>
                             <a class="ui red image label">
                                 <span class="eredmeny">Fájdalom és diszkomfort</span>
-                                <div class="detail"><%= rows[0].fajd %></div>
+                                <div class="detail"><%= teszt.fajd %></div>
                             </a><br>
                             <a class="ui yellow image label">
                                 <span class="eredmeny">Energia és fáradtság</span>
-                                <div class="detail"><%= rows[0].energia %></div>
+                                <div class="detail"><%= teszt.energia %></div>
                             </a><br>
                             <a class="ui blue image label">
                                 <span class="eredmeny">Alvás és pihenés</span>
-                                <div class="detail"><%= rows[0].alvas %></div>
+                                <div class="detail"><%= teszt.alvas %></div>
                             </a><br>
 
-                            <h4 class="ui header">Pszichológiai állapot<a class="ui circular label"><%= rows[0].psziches_d.toFixed(2) %></a></h4>
+                            <h4 class="ui header">Pszichológiai állapot<a class="ui circular label"><%= Number(teszt.psziches_d).toFixed(2) %></a></h4>
                             <a class="ui green image label">
                                 <span class="eredmeny">Pozitív érzések</span>
-                                <div class="detail"><%= rows[0].pozerz %></div>
+                                <div class="detail"><%= teszt.pozerz %></div>
                             </a><br>
                             <a class="ui teal image label">
                                 <span class="eredmeny">Gondolkodás, tanulás</span>
-                                <div class="detail"><%= rows[0].gondolk %></div>
+                                <div class="detail"><%= teszt.gondolk %></div>
                             </a><br>
                             <a class="ui violet image label">
                                 <span class="eredmeny">Önértékelés</span>
-                                <div class="detail"><%= rows[0].onertek %></div>
+                                <div class="detail"><%= teszt.onertek %></div>
                             </a><br>
                             <a class="ui brown image label">
                                 <span class="eredmeny">Testkép</span>
-                                <div class="detail"><%= rows[0].testkep %></div>
+                                <div class="detail"><%= teszt.testkep %></div>
                             </a><br>
                             <a class="ui grey image label">
                                 <span class="eredmeny">Negatív érzések</span>
-                                <div class="detail"><%= rows[0].negerz %></div>
+                                <div class="detail"><%= teszt.negerz %></div>
                             </a><br>
                         </div>
 
                         <div class="five wide column">
-                            <h4 class="ui header">Függetlenség<a class="ui circular label"><%= rows[0].fuggetlen_d.toFixed(2) %></a></h4>
+                            <h4 class="ui header">Függetlenség<a class="ui circular label"><%= Number(teszt.fuggetlen_d).toFixed(2) %></a></h4>
                             <a class="ui olive image label">
                                 <span class="eredmeny">Mobilitás</span>
-                                <div class="detail"><%= rows[0].mobil %></div>
+                                <div class="detail"><%= teszt.mobil %></div>
                             </a><br>
                             <a class="ui yellow image label">
                                 <span class="eredmeny">Mindennapi tevékenységek</span>
-                                <div class="detail"><%= rows[0].aktiv %></div>
+                                <div class="detail"><%= teszt.aktiv %></div>
                             </a><br>
                             <a class="ui blue image label">
                                 <span class="eredmeny">Gyógyszerfüggőség</span>
-                                <div class="detail"><%= rows[0].gyogyszerfugg %></div>
+                                <div class="detail"><%= teszt.gyogyszerfugg %></div>
                             </a><br>
                             <a class="ui violet image label">
                                 <span class="eredmeny">Munkaképesség</span>
-                                <div class="detail"><%= rows[0].munkakep %></div>
+                                <div class="detail"><%= teszt.munkakep %></div>
                             </a><br>
 
-                            <h4 class="ui header">Társas kapcsolatok<a class="ui circular label"><%= rows[0].szoc_d.toFixed(2) %></a></h4>
+                            <h4 class="ui header">Társas kapcsolatok<a class="ui circular label"><%= Number(teszt.szoc_d).toFixed(2) %></a></h4>
                             <a class="ui green image label">
                                 <span class="eredmeny">Szociális kapcsolatok</span>
-                                <div class="detail"><%= rows[0].szoc_kapcs %></div>
+                                <div class="detail"><%= teszt.szoc_kapcs %></div>
                             </a><br>
                             <a class="ui teal image label">
                                 <span class="eredmeny">Szociális támogatás</span>
-                                <div class="detail"><%= rows[0].szoc_tam %></div>
+                                <div class="detail"><%= teszt.szoc_tam %></div>
                             </a><br>
                             <a class="ui pink image label">
                                 <span class="eredmeny">Szexuális aktivitás</span>
-                                <div class="detail"><%= rows[0].szex %></div>
+                                <div class="detail"><%= teszt.szex %></div>
                             </a><br>
                         </div>
 
                         <div class="five wide column">
-                            <h4 class="ui header">Környezet<a class="ui circular label"><%= rows[0].korny_d.toFixed(2) %></a></h4>
+                            <h4 class="ui header">Környezet<a class="ui circular label"><%= Number(teszt.korny_d).toFixed(2) %></a></h4>
                             <a class="ui blue image label">
                                 <span class="eredmeny">Biztonságérzet</span>
-                                <div class="detail"><%= rows[0].biztons %></div>
+                                <div class="detail"><%= teszt.biztons %></div>
                             </a><br>
                             <a class="ui olive image label">
                                 <span class="eredmeny">Otthonkörnyezet</span>
-                                <div class="detail"><%= rows[0].otthonkorny %></div>
+                                <div class="detail"><%= teszt.otthonkorny %></div>
                             </a><br>
                             <a class="ui green image label">
                                 <span class="eredmeny">Anyagi erőforrások</span>
-                                <div class="detail"><%= rows[0].anyagi_ef %></div>
+                                <div class="detail"><%= teszt.anyagi_ef %></div>
                             </a><br>
                             <a class="ui pink image label">
                                 <span class="eredmeny">Egészségügyi ellátás</span>
-                                <div class="detail"><%= rows[0].egeszsegi_ellat %></div>
+                                <div class="detail"><%= teszt.egeszsegi_ellat %></div>
                             </a><br>
                             <a class="ui purple image label">
                                 <span class="eredmeny">Új információk</span>
-                                <div class="detail"><%= rows[0].inform %></div>
+                                <div class="detail"><%= teszt.inform %></div>
                             </a><br>
                             <a class="ui violet image label">
                                 <span class="eredmeny">Szabadidő</span>
-                                <div class="detail"><%= rows[0].szabadido %></div>
+                                <div class="detail"><%= teszt.szabadido %></div>
                             </a><br>
                             <a class="ui yellow image label">
                                 <span class="eredmeny">Fizikai környezet</span>
-                                <div class="detail"><%= rows[0].fiz_korny %></div>
+                                <div class="detail"><%= teszt.fiz_korny %></div>
                             </a><br>
                             <a class="ui orange image label">
                                 <span class="eredmeny">Közlekedés</span>
-                                <div class="detail"><%= rows[0].kozlek %></div>
+                                <div class="detail"><%= teszt.kozlek %></div>
                             </a><br>
-                            <h4 class="ui header">Spiritualitás<a class="ui circular label"><%= rows[0].spiritu_d.toFixed(2) %></a></h4>
+                            <h4 class="ui header">Spiritualitás<a class="ui circular label"><%= Number(teszt.spiritu_d).toFixed(2) %></a></h4>
                             <a class="ui blue image label">
                                 <span class="eredmeny">Általános QOL</span>
-                                <div class="detail"><%= rows[0].altalanos %></div>
+                                <div class="detail"><%= teszt.altalanos %></div>
                             </a><br>
                         </div>
                     </div>
@@ -1287,54 +1287,55 @@
                 <span class="kerdes">Mi a legmagasabb iskolai végzettsége?</span>
                 <br/>
                 <group class="inline-radio" id="vegzettseg">
-                    <div><input type="radio" name="vegzettseg" value="1"><label>nincs</label></div>
-                    <div><input type="radio" name="vegzettseg" value="2"><label>általános iskola</label></div>
-                    <div><input type="radio" name="vegzettseg" value="3"><label>középiskola</label></div>
-                    <div><input type="radio" name="vegzettseg" value="4"><label>főiskola / egyetem</label></div>
+                    <div><input type="radio" name="vegzettseg" value="1" <% if(teszt.whoqol_vegzettseg_id == 1) { %> checked <% } %> ><label>nincs</label></div>
+                    <div><input type="radio" name="vegzettseg" value="2" <% if(teszt.whoqol_vegzettseg_id == 2) { %> checked <% } %> ><label>általános iskola</label></div>
+                    <div><input type="radio" name="vegzettseg" value="3" <% if(teszt.whoqol_vegzettseg_id == 3) { %> checked <% } %> ><label>középiskola</label></div>
+                    <div><input type="radio" name="vegzettseg" value="4" <% if(teszt.whoqol_vegzettseg_id == 4) { %> checked <% } %> ><label>főiskola / egyetem</label></div>
                 </group>
                 <br/>
 
                 <span class="kerdes">Mi a családi állapota?</span>
                 <br/>
                 <group class="inline-radio" id="csaladi_allapot">
-                    <div><input type="radio" name="csaladi_allapot" value="1"><label>egyedülálló</label></div>
-                    <div><input type="radio" name="csaladi_allapot" value="2"><label>külön él</label></div>
-                    <div><input type="radio" name="csaladi_allapot" value="3"><label>házas</label></div>
-                    <div><input type="radio" name="csaladi_allapot" value="4"><label>elvált</label></div>
-                    <div><input type="radio" name="csaladi_allapot" value="5"><label>élettársa van</label></div>
-                    <div><input type="radio" name="csaladi_allapot" value="6"><label>özvegy</label></div>
+                    <div><input type="radio" name="csaladi_allapot" value="1" <% if(teszt.whoqol_csaladi_allapot_id == 1) { %> checked <% } %> ><label>egyedülálló</label></div>
+                    <div><input type="radio" name="csaladi_allapot" value="2" <% if(teszt.whoqol_csaladi_allapot_id == 2) { %> checked <% } %> ><label>külön él</label></div>
+                    <div><input type="radio" name="csaladi_allapot" value="3" <% if(teszt.whoqol_csaladi_allapot_id == 3) { %> checked <% } %> ><label>házas</label></div>
+                    <div><input type="radio" name="csaladi_allapot" value="4" <% if(teszt.whoqol_csaladi_allapot_id == 4) { %> checked <% } %> ><label>elvált</label></div>
+                    <div><input type="radio" name="csaladi_allapot" value="5" <% if(teszt.whoqol_csaladi_allapot_id == 5) { %> checked <% } %> ><label>élettársa van</label></div>
+                    <div><input type="radio" name="csaladi_allapot" value="6" <% if(teszt.whoqol_csaladi_allapot_id == 6) { %> checked <% } %> ><label>özvegy</label></div>
                 </group>
                 <br/>
 
                 <span class="kerdes">Beteg-e jelenleg?</span>
                 <br/>
                 <group class="inline-radio" id="beteg_e">
-                    <div><input type="radio" name="beteg_e" value="1"><label>nem</label></div>
-                    <div><input type="radio" name="beteg_e" value="2"><label>igen</label></div>
+                    <div><input type="radio" name="beteg_e" value="0" <% if(teszt.whoqol_beteg_e_id == 0) { %> checked <% } %> ><label>ismeretlen</label></div>
+                    <div><input type="radio" name="beteg_e" value="1" <% if(teszt.whoqol_beteg_e_id == 1) { %> checked <% } %> ><label>nem</label></div>
+                    <div><input type="radio" name="beteg_e" value="2" <% if(teszt.whoqol_beteg_e_id == 2) { %> checked <% } %> ><label>igen</label></div>
                 </group>
                 <br/>
 
                 <span class="kerdes">Ha valami nincs rendben egészségével, mit gondol, mi az? Kérjük húzza alá azt, amelyik leginkább vonatkozik Önre!</span>
                 <br/>
                 <group class="inline-checkbox">
-                    <div><input type="checkbox" id="sziv" name="sziv"><label>Szívbetegség</label></div>
-                    <div><input type="checkbox" id="vernyomas" name="vernyomas"><label>Magas vérnyomás</label></div>
-                    <div><input type="checkbox" id="reuma" name="reuma"><label>Rheumás betegség</label></div>
-                    <div><input type="checkbox" id="daganat" name="daganat"><label>Daganat</label></div>
-                    <div><input type="checkbox" id="legzoszervi" name="legzoszervi"><label>Krónikus légzõszervi betegség</label></div>
+                    <div><input type="checkbox" id="sziv" name="sziv" <% if(teszt.sziv) { %> checked <% } %> ><label>Szívbetegség</label></div>
+                    <div><input type="checkbox" id="vernyomas" name="vernyomas" <% if(teszt.vernyomas) { %> checked <% } %> ><label>Magas vérnyomás</label></div>
+                    <div><input type="checkbox" id="reuma" name="reuma" <% if(teszt.reuma) { %> checked <% } %> ><label>Rheumás betegség</label></div>
+                    <div><input type="checkbox" id="daganat" name="daganat" <% if(teszt.daganat) { %> checked <% } %> ><label>Daganat</label></div>
+                    <div><input type="checkbox" id="legzoszervi" name="legzoszervi" <% if(teszt.legzoszervi) { %> checked <% } %> ><label>Krónikus légzõszervi betegség</label></div>
                 </group>
                 <group class="inline-checkbox">
-                    <div><input type="checkbox" id="cukorbetegseg" name="cukorbetegseg"><label>Cukorbetegség</label></div>
-                    <div><input type="checkbox" id="halyog" name="halyog"><label>Hályog</label></div>
-                    <div><input type="checkbox" id="feloldali_benulas" name="feloldali_benulassziv"><label>Féloldali bénulás</label></div>
-                    <div><input type="checkbox" id="csonttores" name="csonttores"><label>Csonttörés</label></div>
-                    <div><input type="checkbox" id="kronikus_ideg_v_lelki_problema" name="kronikus_ideg_v_lelki_problema"><label>Krónikus idegi / lelki problémák</label></div>
+                    <div><input type="checkbox" id="cukorbetegseg" name="cukorbetegseg" <% if(teszt.cukorbetegseg) { %> checked <% } %> ><label>Cukorbetegség</label></div>
+                    <div><input type="checkbox" id="halyog" name="halyog" <% if(teszt.halyog) { %> checked <% } %> ><label>Hályog</label></div>
+                    <div><input type="checkbox" id="feloldali_benulas" name="feloldali_benulassziv" <% if(teszt.feloldali_benulassziv) { %> checked <% } %> ><label>Féloldali bénulás</label></div>
+                    <div><input type="checkbox" id="csonttores" name="csonttores" <% if(teszt.csonttores) { %> checked <% } %> ><label>Csonttörés</label></div>
+                    <div><input type="checkbox" id="kronikus_ideg_v_lelki_problema" name="kronikus_ideg_v_lelki_problema" <% if(teszt.kronikus_ideg_v_lelki_problema) { %> checked <% } %> ><label>Krónikus idegi / lelki problémák</label></div>
                 </group>
                 <group class="inline-checkbox">
-                    <div><input type="checkbox" id="kronikus_labbetegseg_fajdalom" name="kronikus_labbetegseg_fajdalom"><label>Krónikus lábbetegségek, fájdalom</label></div>
-                    <div><input type="checkbox" id="aranyer" name="aranyer"><label>Aranyér</label></div>
-                    <div><input type="checkbox" id="parkinson" name="parkinson"><label>Parkinson betegség</label></div>
-                    <div><input type="checkbox" name="egyeb"><label>Egyéb</label></div>
+                    <div><input type="checkbox" id="kronikus_labbetegseg_fajdalom" name="kronikus_labbetegseg_fajdalom" <% if(teszt.kronikus_labbetegseg_fajdalom) { %> checked <% } %> ><label>Krónikus lábbetegségek, fájdalom</label></div>
+                    <div><input type="checkbox" id="aranyer" name="aranyer" <% if(teszt.aranyer) { %> checked <% } %> ><label>Aranyér</label></div>
+                    <div><input type="checkbox" id="parkinson" name="parkinson" <% if(teszt.parkinson) { %> checked <% } %> ><label>Parkinson betegség</label></div>
+                    <div><input type="checkbox" name="egyeb" <% if(teszt.egyeb) { %> checked <% } %> ><label>Egyéb</label></div>
                 </group>
                 <br/>
             </form>
@@ -1354,7 +1355,7 @@
     }
 </script>
 <script type="text/javascript">
-    var tesztadatok = <%- JSON.stringify(rows[0]) %>;
+    var tesztadatok = <%- JSON.stringify(teszt) %>;
 
     var rkerdesek = document.getElementsByClassName("inline-radio");
     for (i = 0; i < rkerdesek.length; i++) {
