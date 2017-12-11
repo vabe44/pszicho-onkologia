@@ -1,14 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const mw = require("../middlewares");
-// const m = require("../models");
-const knex        = require('../config/knex/config');
 require('../public/scripts/arrFindByProp');
 const models = require("../models");
 const moment = require('moment');
 
 // INDEX - show all patients
-router.get("/", mw.isLoggedIn, mw.asyncMiddleware(async (req, res, next) => { 
+router.get("/", mw.isLoggedIn, mw.asyncMiddleware(async (req, res, next) => {
 
     const betegek = await models.Beteg.findAll({ include: [ models.BetegCsoport ] });
     res.render("betegek/index", { betegek });

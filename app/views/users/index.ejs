@@ -9,13 +9,15 @@
         <table class="ui celled padded table">
             <thead>
                 <tr>
-                    <th class="single line">Name</th>
-                    <th>Username</th>
+                    <th class="single line">Név</th>
+                    <th>Leírás</th>
                     <th>Email</th>
-                    <th>Created At</th>
-                    <th>Status</th>
-                    <th>About</th>
-                    <th>Action</th>
+                    <th>Regisztrált</th>
+                    <th>Szerep</th>
+                    <th>Státusz</th>
+                    <% if(locals.currentUser.role === 'admin') { %>
+                        <th>Művelet</th>
+                    <% } %>
                 </tr>
             </thead>
             <tbody>
@@ -23,41 +25,18 @@
                 <% users.forEach(function(users){ %>
                     <tr>
                         <td><%= users.lastname %> <%= users.firstname %></td>
-                        <td><%= users.username %></td>
-                        <td><%= users.email %></td>
-                        <td><%= users.createdAt %></td>
-                        <td><%= users.status %></td>
                         <td><%= users.about %></td>
-                        <td>
-                            <div class="ui compact menu">
-                                <div class="ui simple dropdown item">
-                                    Select
-                                    <i class="dropdown icon"></i>
-                                    <div class="menu">
-                                        <div class="item">
-                                            <a href="/users/<%= users.id %>/edit">Edit</a>
-                                        </div>
-                                        <div class="item">Disable</div>
-                                        <div class="item">Delete</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
+                        <td><%= users.email %></td>
+                        <td><%= moment(users.createdAt).format('LL'); %></td>
+                        <td><%= users.role %></td>
+                        <td><%= users.status %></td>
+                        <% if(locals.currentUser.role === 'admin') { %>
+                            <td><a href="/users/<%= users.id %>/edit"><button class="ui button">Módosítás</button></a></td>
+                        <% } %>
                     </tr>
                 <% }); %>
 
             </tbody>
-            <tfoot class="full-width">
-                <tr>
-                    <th colspan="7">
-                    <a href="/users/new">
-                        <div class="ui right floated small primary labeled icon button">
-                            <i class="user icon"></i> Add User
-                        </div>
-                    </a>
-                    </th>
-                </tr>
-            </tfoot>
         </table>
 
     </div>

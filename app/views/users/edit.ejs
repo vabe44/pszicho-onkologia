@@ -1,4 +1,4 @@
-<% include ../partials/users_indexheader %>
+<% include ../partials/header %>
 
     <div class="ui container">
 
@@ -10,36 +10,71 @@
             <div class="field">
                 <div class="two fields">
                     <div class="field">
-                        <label>First Name</label>
-                        <input type="text" name="firstname" placeholder="First Name" value="<%= user.firstname %>">
+                        <label for="firstname">Keresztnév</label>
+                        <input type="text" name="firstname" placeholder="<%= user.firstname %>" value="<%= user.firstname %>">
                     </div>
                     <div class="field">
-                        <label>Last Name</label>
-                        <input type="text" name="lastname" placeholder="Last Name" value="<%= user.lastname %>">
+                        <label for="lastname">Vezetéknév</label>
+                        <input type="text" name="lastname" placeholder="<%= user.lastname %>" value="<%= user.lastname %>">
                     </div>
                 </div>
+            </div>
+            <div class="field">
+                <label for="email">Email cim</label>
+                <input type="text" name="email" placeholder="<%= user.email %>" value="<%= user.email %>">
             </div>
             <div class="field">
                 <div class="two fields">
                     <div class="field">
-                        <label>Username</label>
-                        <input type="text" name="username" placeholder="username" value="<%= user.username %>">
+                        <label for="role">Szerep</label>
+                        <div class="ui selection dropdown">
+                            <input type="hidden" name="role">
+                            <i class="dropdown icon"></i>
+                            <div class="default text"><%= user.role %></div>
+                            <div class="menu">
+                                <div class="item" data-value="admin">Admin</div>
+                                <div class="item" data-value="user">User</div>
+                            </div>
+                        </div>
                     </div>
                     <div class="field">
-                        <label>Email address</label>
-                        <input type="text" name="email" placeholder="email" value="<%= user.email %>">
+                        <label for="status">Státusz</label>
+                        <div class="ui selection dropdown">
+                            <input type="hidden" name="status">
+                            <i class="dropdown icon"></i>
+                            <div class="default text"><%= user.status %></div>
+                            <div class="menu">
+                                <div class="item" data-value="active">active</div>
+                                <div class="item" data-value="inactive">inactive</div>
+                            </div>
+                        </div>
                     </div>
+
                 </div>
             </div>
 
             <div class="field">
-                <label>About</label>
-                <textarea rows="2" name="about" placeholder="" value="<%= user.about %>"></textarea>
+                <label>Leírás</label>
+                <textarea rows="2" name="about" placeholder="<%= user.about %>"><%= user.about %></textarea>
             </div>
 
-            <button class="ui button" type="submit">Submit</button>
+            <button class="ui fluid button" type="submit">Mentés</button>
         </form>
 
+        <% if(locals.currentUser.id != user.id) { %>
+            <form id="delete-form" action="/users/<%= user.id %>?_method=DELETE" method="POST">
+                <button class="ui fluid negative button" type="submit">Törlés</button>
+            </form>
+        <% } %>
+
     </div>
+
+    <script src='/scripts/jquery-2.2.4.min.js'></script>
+    <script src='/scripts/semantic.min.js'></script>
+
+<script>
+    // initialize dropdowns
+    $('.ui.dropdown').dropdown();
+</script>
 
 <% include ../partials/footer %>
