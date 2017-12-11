@@ -80,10 +80,6 @@ app.use(function (err, req, res, next) {
     res.render('error');
 });
 
-app.get("/", function(req, res){
-    res.render("landing");
-});
-
 app.listen(3002, 'localhost', function(req, res){
-    console.log("The Server Has Started!");
+    console.log("A szerver elindult!");
 });

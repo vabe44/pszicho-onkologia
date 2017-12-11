@@ -1,28 +1,34 @@
-var authController = require('../controllers/authcontroller.js');
-
 module.exports = function(app, passport) {
-    app.get('/signup', authController.signup);
-    app.get('/login', authController.login);
 
+    /* GET signup page. */
+    app.get('/signup', function (req, res, next) {
+        res.render('signup');
+    });
+
+    /* POST signup page. */
     app.post('/signup', passport.authenticate('local-signup', {
-            successRedirect: '/dashboard',
+            successRedirect: '/betegek',
             failureRedirect: '/signup'
         }
     ));
 
+    /* GET login page. */
+    app.get('/login', function (req, res, next) {
+        res.render('login');
+    });
+
+    /* POST login page. */
     app.post('/login', passport.authenticate('local-signin', {
-            successRedirect: '/dashboard',
+            successRedirect: '/betegek',
             failureRedirect: '/login'
         }
     ));
 
-    app.get('/logout', authController.logout);
-    app.get('/dashboard', isLoggedIn, authController.dashboard);
-
-    function isLoggedIn(req, res, next) {
-        if (req.isAuthenticated())
-            return next();
-        res.redirect('/login');
-    }
+    /* GET logout page. */
+    app.get('/logout', function (req, res, next) {
+        req.session.destroy(function(err) {
+            res.redirect('/');
+        });
+    });
 
 }

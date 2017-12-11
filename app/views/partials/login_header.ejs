@@ -12,12 +12,11 @@
   <link rel="stylesheet" href="/css/reset.css">
 
   <script src="scripts/jquery-2.2.4.min.js"></script>
-  <script src="scripts/components/form.js"></script>
-  <script src="scripts/components/transition.js"></script>
+  <script src="scripts/semantic.min.js"></script>
 
   <style type="text/css">
     body {
-      background-color: #DADADA;
+      background-color: #e91e63;
     }
     body > .grid {
       height: 100%;
@@ -27,6 +26,9 @@
     }
     .column {
       max-width: 450px;
+    }
+    .content {
+      color: white;
     }
   </style>
   <script>
@@ -40,11 +42,11 @@
               rules: [
                 {
                   type   : 'empty',
-                  prompt : 'Please enter your e-mail'
+                  prompt : 'Kérlek add meg az email címed'
                 },
                 {
                   type   : 'email',
-                  prompt : 'Please enter a valid e-mail'
+                  prompt : 'Kérlek helyes email címet adj meg'
                 }
               ]
             },
@@ -53,11 +55,11 @@
               rules: [
                 {
                   type   : 'empty',
-                  prompt : 'Please enter your password'
+                  prompt : 'Kérlek add meg a jelszót'
                 },
                 {
                   type   : 'length[2]',
-                  prompt : 'Your password must be at least 6 characters'
+                  prompt : 'A jelszónak minimum 2 karakter hosszúnak kell lennie'
                 }
               ]
             }
