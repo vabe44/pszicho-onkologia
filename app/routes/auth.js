@@ -20,14 +20,15 @@ module.exports = function(app, passport) {
     /* POST login page. */
     app.post('/login', passport.authenticate('local-signin', {
             successRedirect: '/betegek',
-            failureRedirect: '/login'
+            failureRedirect: '/login',
+            failureFlash: true,
         }
     ));
 
     /* GET logout page. */
     app.get('/logout', function (req, res, next) {
         req.session.destroy(function(err) {
-            res.redirect('/');
+            res.redirect('/login');
         });
     });
 

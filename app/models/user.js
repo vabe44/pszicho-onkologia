@@ -18,19 +18,17 @@ module.exports = function (sequelize, Sequelize) {
             notEmpty: true
         },
 
-        username: {
-            type: Sequelize.TEXT
-        },
-
         about: {
-            type: Sequelize.TEXT
+            type: Sequelize.TEXT,
+            allowNull: true
         },
 
         email: {
             type: Sequelize.STRING,
             validate: {
                 isEmail: true
-            }
+            },
+            allowNull: false
         },
 
         password: {
@@ -39,15 +37,21 @@ module.exports = function (sequelize, Sequelize) {
         },
 
         last_login: {
-            type: Sequelize.DATE
+            type: Sequelize.DATE,
+            allowNull: true
         },
 
         status: {
             type: Sequelize.ENUM('active', 'inactive'),
-            defaultValue: 'active'
+            defaultValue: 'inactive',
+            allowNull: false
+        },
+
+        role: {
+            type: Sequelize.ENUM('admin', 'user'),
+            defaultValue: 'user',
+            allowNull: false
         }
-
-
     });
 
     return User;

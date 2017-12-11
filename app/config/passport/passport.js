@@ -4,7 +4,6 @@ var bCrypt = require('bcrypt-nodejs');
 
 module.exports = function(passport, user) {
 
-
    var User = user;
    var LocalStrategy = require('passport-local').Strategy;
     //serialize
@@ -43,7 +42,7 @@ module.exports = function(passport, user) {
                 if (user)
                 {
                     return done(null, false, {
-                        message: 'That email is already taken'
+                        message: 'Ez az email cím már foglalt.'
                     });
                 } else
                 {
@@ -53,7 +52,9 @@ module.exports = function(passport, user) {
                                 email: email,
                                 password: userPassword,
                                 firstname: req.body.firstname,
-                                lastname: req.body.lastname
+                                lastname: req.body.lastname,
+                                status: 'inactive',
+                                role: 'user',
                             };
 
                     User.create(data).then(function(newUser, created) {
@@ -94,22 +95,29 @@ module.exports = function(passport, user) {
 
                 if (!user) {
                     return done(null, false, {
-                        message: 'Email does not exist'
+                        message: 'Ez az email cím nem létezik.'
                     });
                 }
 
                 if (!isValidPassword(user.password, password)) {
                     return done(null, false, {
-                        message: 'Incorrect password.'
+                        message: 'Helytelen jelszó.'
                     });
                 }
+
+                if (user.status !== 'active') {
+                    return done(null, false, {
+                        message: 'Ezt a fiókot még nem aktiválták. Kérlek próbáld meg később.'
+                    });
+                }
+
                 var userinfo = user.get();
                 return done(null, userinfo);
 
             }).catch(function(err) {
                 console.log("Error:", err);
                 return done(null, false, {
-                    message: 'Something went wrong with your Signin'
+                    message: 'Valami hiba történt a bejelentkezés közben.'
                 });
             });
         }

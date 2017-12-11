@@ -1,23 +1,47 @@
-<!DOCTYPE html>
-<html>
+<% include partials/login_header %>
 
-<head>
-    <title></title>
-</head>
+<div class="ui middle aligned center aligned grid">
+  <div class="column">
+    <h2 class="ui teal header">
+      <div class="content">
+        Regisztráció
+      </div>
+    </h2>
+    <form class="ui large form" id="login" name="login" method="post" action="/signup">
+      <div class="ui stacked segment">
+        <div class="two fields">
+            <div class="field">
+                <div class="ui left icon input">
+                    <i class="user icon"></i>
+                    <input type="text" name="lastname" placeholder="Vezetéknév">
+                </div>
+            </div>
+            <div class="field">
+                <div class="ui left icon input">
+                    <i class="user icon"></i>
+                    <input type="text" name="firstname" placeholder="Keresztnév">
+                </div>
+            </div>
+        </div>
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="mail icon"></i>
+            <input type="text" name="email" placeholder="E-mail cím">
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="lock icon"></i>
+            <input type="password" name="password" placeholder="Jelszó">
+          </div>
+        </div>
+        <div class="ui fluid large teal submit button">Regisztrálás</div>
+      </div>
 
-<body>
-    <form id="signup" name="signup" method="post" action="/signup">
-        <label for="email">Email Address</label>
-        <input class="text" name="email" type="email" />
-        <label for="firstname">Firstname</label>
-        <input name="firstname" type="text" />
-        <label for="lastname">Lastname</label>
-        <input name="lastname" type="text" />
-        <label for="password">Password</label>
-        <input name="password" type="password" />
-        <input class="btn" type="submit" value="Sign Up" />
+      <div class="ui error message"></div>
+
     </form>
+  </div>
+</div>
 
-</body>
-
-</html>
+<% include partials/footer %>

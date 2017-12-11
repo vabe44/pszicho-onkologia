@@ -3,7 +3,7 @@ module.exports = {
         if (req.isAuthenticated()) {
             return next();
         } else {
-            req.flash("error", "You must be logged in to do that.");
+            req.flash("error", "Kérlek, előbb jelentkezz be.");
             res.redirect('/login');
         }
     },
@@ -12,7 +12,7 @@ module.exports = {
         if (res.locals.currentUser.role === "admin") {
             return next();
         } else {
-            req.flash("error", "You don't have permissions to do that.");
+            req.flash("error", "Ehhez adminisztrátori engedély szükséges.");
             res.redirect('back');
         }
     },
