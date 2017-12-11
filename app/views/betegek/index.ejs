@@ -6,18 +6,18 @@
 
         <h1 class="ui centered inverted header">Betegek</h1>
 
-        <center><a href="/betegek/new"><button class="ui inverted basic button">Add New</button></a></center>
+        <center><a href="/betegek/new"><button class="ui inverted basic button">Új Beteg</button></a></center>
 
         <table class="ui celled padded table">
             <thead>
                 <tr>
-                    <th class="single line">ID</th>
-                    <th>Nev</th>
+                    <th class="single line">Kód</th>
+                    <th>Név</th>
                     <th>Csoport</th>
-                    <th>Megjegyzes</th>
-                    <th>Fazis</th>
-                    <th>Kutataszaro</th>
-                    <th>Action</th>
+                    <th>Megjegyzés</th>
+                    <th>Fázis</th>
+                    <th>Kutatászáró</th>
+                    <th>Művelet</th>
                 </tr>
             </thead>
             <tbody>
@@ -31,24 +31,12 @@
                                 </button>
                             </a>
                         </td>
-
                         <td><%= beteg.nev %></td>
                         <td><%= beteg.BetegCsoport.nev %></td>
                         <td><%= beteg.megjegyzes %></td>
                         <td><%= beteg.fazis %></td>
                         <td><%= beteg.kutataszaro %></td>
-                        <td>
-
-                            <div class="ui icon bottom right pointing dropdown button">
-                                <i class="wrench icon"></i>
-                                <div class="menu">
-                                    <a class="item disabled" href="#">Delete</a>
-                                    <a class="item" href="/betegek/<%= beteg.id %>/edit">Edit</a>
-                                    <a class="item" href="/betegek/<%= beteg.id %>">Profile</a>
-                                </div>
-                            </div>
-
-                        </td>
+                        <td><a href="/betegek/<%= beteg.id %>/edit"><button class="ui button">Módosítás</button></a></td>
                     </tr>
                 <% }); %>
 

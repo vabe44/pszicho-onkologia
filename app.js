@@ -47,6 +47,10 @@ app.use(function(req, res, next){
     next();
 });
 
+app.get("/", function(req, res, next){
+    res.redirect("/betegek");
+});
+
 // Routes
 var authRoute = require('./app/routes/auth.js')(app,passport);
 

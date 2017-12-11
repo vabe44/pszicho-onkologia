@@ -76,7 +76,7 @@ router.put("/:id", mw.isLoggedIn, mw.asyncMiddleware(async (req, res, next) => {
         kutataszaro: req.body.kutataszaro,
         beteg_csoport_id: req.body.csoport
     });
-    req.flash("success", "Siker! Beteg modositva.");
+    req.flash("success", "Siker! Beteg módosítva.");
     res.redirect("/betegek/" + beteg.id);
 
 }));
@@ -85,8 +85,11 @@ router.put("/:id", mw.isLoggedIn, mw.asyncMiddleware(async (req, res, next) => {
 router.delete('/:id', mw.isLoggedIn, mw.asyncMiddleware(async (req, res, next) => {
 
     const beteg = await models.Beteg.findById(req.params.id);
+    await models.WhoqolNyersadat.bulkDelete([{
+        beteg_id: beteg.id
+    }]);
     await beteg.destroy();
-    req.flash("success", "Siker! Beteg torolve.");
+    req.flash("success", "Siker! Beteg és tesztjei törölve.");
     res.redirect('/betegek');
 
 }));
