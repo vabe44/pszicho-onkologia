@@ -10,7 +10,7 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>User ID</th>
+                    <th>Beteg</th>
                     <th class="single line">Dátum</th>
                     <th>Alkalom</th>
                     <th>Megjegyzés</th>
@@ -27,8 +27,8 @@
                         <td class="single line"><%= moment(teszt.datum).format('LL') %></td>
                         <td><%= teszt.WhoqolAlkalom.kod %></td>
                         <td><%= teszt.megjegyzes %></td>
-                        <td><a href="/qol/<%= teszt.id %>"><button class="ui basic button"><i class="fa fa-eye" aria-hidden="true"></i></button></a></td>
-                        <td><a href="/qol/<%= teszt.id %>/edit"><button class="ui basic button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a></td>
+                        <td><a href="/qol/<%= teszt.id %>"><button class="ui button">Megtekintés</button></a></td>
+                        <td><a href="/qol/<%= teszt.id %>/edit"><button class="ui button">Módosítás</button></a></td>
                     </tr>
                 <% }); %>
 

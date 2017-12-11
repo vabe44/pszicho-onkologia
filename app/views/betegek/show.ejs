@@ -13,14 +13,13 @@
                                 <div class="ui dimmer">
                                     <div class="content">
                                         <div class="center">
-                                            <div class="ui inverted button">Profil</div>
                                         </div>
                                     </div>
                                 </div>
                                 <img src="/images/kristy.png">
                             </div>
                             <div class="content">
-                                <div class="header"><%= beteg.id %></div>
+                                <div class="header"><%= beteg.azonosito %></div>
                                 <div class="meta">
                                     <h4 class="ui header"><%= beteg.BetegCsoport.nev %></h4>
                                 </div>
@@ -46,7 +45,7 @@
                             </p>
 
                             <h4 class="ui header">
-                                Name
+                                Név
                             </h4>
                             <p>
                                 <%= beteg.nev === '' ? 'ismeretlen' : beteg.nev %>
@@ -60,14 +59,14 @@
                             </p>
 
                             <h4 class="ui header">
-                                Fazis
+                                Fázis
                             </h4>
                             <p>
                                 <%= beteg.fazis %>
                             </p>
 
                             <h4 class="ui header">
-                                Kutataszaro
+                                Kutatászáró
                             </h4>
                             <p>
                                 <%= beteg.kutataszaro === '' ? 'nem' : beteg.kutataszaro %>
@@ -97,22 +96,22 @@
                 <thead>
                     <tr>
                         <th class="sorted descending">Alkalom</th>
-                        <th class="">Allapot</th>
-                        <th class="">Datum</th>
-                        <th class="">Megjegyzes</th>
-                        <th class="">Megtekintes</th>
-                        <th class="">Modositas</th>
+                        <th class="">Állapot</th>
+                        <th class="">Dátum</th>
+                        <th class="">Megjegyzés</th>
+                        <th class="">Megtekintés</th>
+                        <th class="">Módosítás</th>
                     </tr>
                 </thead>
                 <tbody>
                     <% for (var i = 1; i <= 6; i++) { %>
                         <tr class="<%= beteg.WhoqolNyersadats.containsByProp('whoqol_alkalom_id', i) === false ? 'negative' : 'positive' %>">
                             <td><%= i %></td>
-                            <td><%- beteg.WhoqolNyersadats.containsByProp('whoqol_alkalom_id', i) === false ? '<i class="attention icon"></i> Hianyzik' : '<i class="green checkmark icon"></i> Kitoltve' %></td>
-                            <%- beteg.WhoqolNyersadats[beteg.WhoqolNyersadats.containsByProp('whoqol_alkalom_id', i)] === undefined ? '<td class="error"><i class="attention icon"></i> Hianyzik</td>' : '<td>'+ moment(beteg.WhoqolNyersadats[beteg.WhoqolNyersadats.containsByProp("whoqol_alkalom_id", i)].datum).format('LL') +'</td>' %>
+                            <td><%- beteg.WhoqolNyersadats.containsByProp('whoqol_alkalom_id', i) === false ? '<i class="attention icon"></i> Hiányzik' : '<i class="green checkmark icon"></i> Kitöltve' %></td>
+                            <%- beteg.WhoqolNyersadats[beteg.WhoqolNyersadats.containsByProp('whoqol_alkalom_id', i)] === undefined ? '<td class="error"><i class="attention icon"></i> Hiányzik</td>' : '<td>'+ moment(beteg.WhoqolNyersadats[beteg.WhoqolNyersadats.containsByProp("whoqol_alkalom_id", i)].datum).format('LL') +'</td>' %>
                             <td><%= beteg.WhoqolNyersadats[beteg.WhoqolNyersadats.containsByProp('whoqol_alkalom_id', i)] === undefined ? '' : beteg.WhoqolNyersadats[beteg.WhoqolNyersadats.containsByProp('whoqol_alkalom_id', i)].megjegyzes %></td>
-                            <td><%- beteg.WhoqolNyersadats.containsByProp('whoqol_alkalom_id', i) === false ? '<button class="ui disabled button">Megtekintes</button>' : '<a href="/qol/'+beteg.WhoqolNyersadats[beteg.WhoqolNyersadats.containsByProp("whoqol_alkalom_id", i)].id+'"><button class="ui button">Megtekintes</button></a>' %></td>
-                            <td><%- beteg.WhoqolNyersadats.containsByProp('whoqol_alkalom_id', i) === false ? '<button class="ui disabled button">Modositas</button>' : '<a href="/qol/'+beteg.WhoqolNyersadats[beteg.WhoqolNyersadats.containsByProp("whoqol_alkalom_id", i)].id+'/edit"><button class="ui button">Modositas</button></a>' %></td>
+                            <td><%- beteg.WhoqolNyersadats.containsByProp('whoqol_alkalom_id', i) === false ? '<button class="ui disabled button">Megtekintés</button>' : '<a href="/qol/'+beteg.WhoqolNyersadats[beteg.WhoqolNyersadats.containsByProp("whoqol_alkalom_id", i)].id+'"><button class="ui button">Megtekintés</button></a>' %></td>
+                            <td><%- beteg.WhoqolNyersadats.containsByProp('whoqol_alkalom_id', i) === false ? '<button class="ui disabled button">Módosítás</button>' : '<a href="/qol/'+beteg.WhoqolNyersadats[beteg.WhoqolNyersadats.containsByProp("whoqol_alkalom_id", i)].id+'/edit"><button class="ui button">Módosítás</button></a>' %></td>
                         </tr>
                     <% } %>
                 </tbody>

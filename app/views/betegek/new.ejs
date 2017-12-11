@@ -5,16 +5,16 @@
     <% include ../partials/menu %>
 
     <form id="newbeteg" name="newbeteg" class="ui form" method="POST" action="/betegek">
-        <h1 class="ui centered header">Uj Beteg</h1>
+        <h1 class="ui centered header">Új Beteg</h1>
         <br>
         <div class="field">
             <div class="three fields">
                 <div class="field">
-                    <label>Azonosito</label>
+                    <label>Azonosító</label>
                     <input type="text" name="azonosito" id="azonosito" placeholder="Azonosito">
                 </div>
                 <div class="field">
-                    <label>Nev</label>
+                    <label>Név</label>
                     <input type="text" name="nev" id="nev" placeholder="Nev">
                 </div>
                 <div class="field">
@@ -32,15 +32,15 @@
         <div class="field">
             <div class="two fields">
                 <div class="field">
-                    <label>Fazis</label>
+                    <label>Fázis</label>
                     <input type="text" name="fazis" id="fazis" placeholder="Optional">
                 </div>
                 <div class="field">
-                    <label>Kutataszaro</label>
+                    <label>Kutatászáró</label>
                     <div class="ui selection dropdown" id="kutataszaro-select">
                         <input type="hidden" name="kutataszaro" id="kutataszaro">
                         <i class="dropdown icon"></i>
-                        <div class="default text">Kutataszaro</div>
+                        <div class="default text">Kutatászáró</div>
                         <div class="menu">
                             <div class="item" data-value="" data-text="Nem">
                                 Nem
@@ -54,11 +54,11 @@
             </div>
         </div>
         <div class="field">
-            <label>Megjegyzes</label>
-            <textarea rows="2" name="megjegyzes" id="megjegyzes" placeholder="Egyeb tudnivalok"></textarea>
+            <label>Megjegyzés</label>
+            <textarea rows="2" name="megjegyzes" id="megjegyzes" placeholder="Egyéb tudnivalók"></textarea>
         </div>
 
-        <button class="ui button" type="submit">Submit</button>
+        <button class="ui button" type="submit">Mentés</button>
     </form>
 
 </div>
